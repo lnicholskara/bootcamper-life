@@ -1,3 +1,81 @@
+* {
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  box-sizing: border-box;
+  line-height: 1.2;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navbar {
+  background: none !important;
+  padding: 0;
+}
+#navLogo{
+  margin: 2rem auto 0 6rem;
+}
+
+.img-responsive {
+  background-image: url("../images/hp-hero-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#main {
+  margin: 8rem auto 2rem 12rem;
+}
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+h5 {
+  font-weight: 200;
+  opacity: .7;
+}
+
+#signUp,
+#logIn {
+  border-radius: 25px;
+  margin-top: .5rem;
+}
+
+#newAcctSubmit,
+#logSubmit {
+  border-radius: 25px;
+}
+
+/* FORM */
+#emailHelp,
+#gradHelp {
+  font-weight: 200;
+  font-style: italic;
+  color: white !important;
+  opacity: .7;
+}
+
+input {
+  border-radius: 25px !important;
+}
+
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0;
+  /* background-color: #f5f5f5; */
+}
+
+#footerContent {
+  margin-left: 6rem;
+  font-weight: 200;
+}
+
+
 .list-group-item {
   line-height: 2.5;
 }
