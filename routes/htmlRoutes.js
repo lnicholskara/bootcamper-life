@@ -1,16 +1,18 @@
 /* eslint-disable prettier/prettier */
-var db = require("../models");
+/*var db = require("../models");
 
-module.exports = function(app, passport) {
+var authController = require("../controllers/authcontroller.js");*/
+ 
+module.exports = function(app) {
 
+  app.get("/", function(req, res) {
+    res.end("Hello world");
+  });
+  
+  /*
   // Default Code - Load index page
   app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+    res.render("index", {});
   });
 
   // "/login" - Login page
@@ -19,7 +21,7 @@ module.exports = function(app, passport) {
   });
   app.post(
     "/login",
-    passport.authentificate("local-login", {
+    passport.authenticate("local-login", {
       successRedirect: "/posts",
       failureRedirect: "/login",
       failureFlash: true
@@ -35,13 +37,11 @@ module.exports = function(app, passport) {
   );
 
   // "/createprofile" - Page with form to create new profile
-  app.get("/signup", function(req, res) {
-    res.render("signup", { message: req.flash("signupMessage") });
-  });
+  app.get("/signup", authController.signup);
 
   app.post(
     "/signup",
-    passport.authentificate("local-signup", {
+    passport.authenticate("local-signup", {
       successRedirect: "/posts",
       failureRedirect: "/signup",
       failureFlash: true
@@ -61,7 +61,7 @@ module.exports = function(app, passport) {
   });
 
   function isLoggedIn(req, res, next) {
-    if (req.isAuthentificated()) {
+    if (req.isauthenticated()) {
       return next();
     }
     res.redirect("/");
@@ -75,6 +75,7 @@ module.exports = function(app, passport) {
 
   //************************************************/
   // Load single profile by id
+  /*
   app.get("/profile/:id", function (req, res) {
     db.Profile.findOne({ where: { id: req.params.id } }).then(function (
       oneProfile
@@ -86,7 +87,7 @@ module.exports = function(app, passport) {
   });
 
   // Load single post by id
-  app.get("/post/:id", function (req, res) {
+  app.get("/posts/:id", function (req, res) {
     db.Profile.findOne({
       where: { id: req.params.id },
       include: [db.Profile]
@@ -99,7 +100,8 @@ module.exports = function(app, passport) {
   });
   //************************************************/
   // Render 404 page for any unmatched routes
+  /*
   app.get("*", function (req, res) {
     res.render("404");
-  });
+  });*/
 };
