@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS bootcamp_db;
-CREATE DATABASE bootcamp_db;
