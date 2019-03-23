@@ -1,20 +1,20 @@
 require("dotenv").config();
 var express = require("express");
-/*var exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 
 // Setup Session
-var cookieParser = require("cookie-parser");
-var session = require("express-session");
+// var cookieParser = require("cookie-parser");
+// var session = require("express-session");
 var passport = require("passport");
 var flash = require("connect-flash");
-/*var morgan = require("morgan");*/
+// var morgan = require("morgan");
 
 var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 4000;
 
-/*require("./config/passport")(passport, db.User);
+require("./config/passport")(passport, db.User);
 
 /*app.use(morgan("dev"));
 app.use(cookieParser);
@@ -27,7 +27,7 @@ app.use(
     saveUninitialized: true
   })
 );*/
-/*
+
 // Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,13 +46,13 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
-*/
 
 // Routes
-//require("./routes/apiRoutes")(app, passport);
+require("./routes/apiRoutes")(app, passport);
+require("./routes/htmlRoutes")(app, passport);
 
-var test = require('./routes/htmlRoutes');
-test(app);
+// var test = require('./routes/htmlRoutes');
+// test(app);
 
 var syncOptions = { force: false };
 
