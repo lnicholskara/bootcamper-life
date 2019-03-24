@@ -1,33 +1,15 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-
-// Setup Session
-var cookieParser = require("cookie-parser");
-var session = require("express-session");
 var passport = require("passport");
 var flash = require("connect-flash");
-var morgan = require("morgan");
 
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 4000;
 
-// Passport Setup
-require("./config/passport")(passport);
-
-app.use(morgan("dev"));
-app.use(cookieParser);
-
-// Session Setup
-app.use(
-  session({
-    secret: "justasecret",
-    resave: true,
-    saveUninitialized: true
-  })
-);
+require("./config/passport")(passport, db.User);
 
 // Initialize Passport
 app.use(passport.initialize());
@@ -49,8 +31,11 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routes/apiRoutes")(app, passport);
+require("./routes/htmlRoutes")(app, passport);
+
+// var test = require('./routes/htmlRoutes');
+// test(app);
 
 var syncOptions = { force: false };
 
@@ -61,8 +46,8 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function () {
-  app.listen(PORT, function () {
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,

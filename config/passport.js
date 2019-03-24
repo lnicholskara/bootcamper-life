@@ -1,15 +1,63 @@
-var localStrategy = require("passport-local").Strategy;
+var bCrypt = require("bcrypt-nodejs");
 
-var mysql = require("mysql");
-var bcrypt = require("bcrypt-nodejs");
-var env = process.env.NODE_ENV || "development";
-var dbconfig = require("./config.js")[env];
-var connection = mysql.createConnection(dbconfig.connection);
+module.exports = function(passport, user) {
+  var User = user;
 
-connection.query("USE " + dbconfig.database);
+  var LocalStrategy = require("passport-local").Strategy;
+  passport.use(
+    "local-signup",
+    new LocalStrategy(
+      {
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true // allows us to pass back the entire request to the callback
+      },
 
-module.exports = function(passport) {
-  passport.serializeUser(function(user, done) {
+      function(req, email, password, done) {
+        var generateHash = function(password) {
+          return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+        };
+
+        User.findOne({
+          where: {
+            email: email
+          }
+        }).then(function(user) {
+          if (user) {
+            return done(null, false, {
+              message: "That email is already taken"
+            });
+          } else {
+            var userPassword = generateHash(password);
+
+            var data = {
+              email: email,
+
+              password: userPassword,
+
+              firstname: req.body.firstname,
+
+              lastname: req.body.lastname
+            };
+
+            User.create(data).then(function(newUser, created) {
+              if (!newUser) {
+                return done(null, false);
+              }
+
+              if (newUser) {
+                return done(null, newUser);
+              }
+
+              console.log(created);
+            });
+          }
+        });
+      }
+    )
+  );
+};
+/*passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
 
@@ -105,5 +153,4 @@ module.exports = function(passport) {
         );
       }
     )
-  );
-};
+  );*/

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define(
-    "users",
+    "User",
     {
       //New Users Setup
       first_name: {
