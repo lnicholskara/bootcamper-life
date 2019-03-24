@@ -22,9 +22,8 @@ module.exports = function(app, passport) {
   );
 
   // "/createprofile" - Page with form to create new profile
-  app.get("/signup", function(req, res) {
-    res.render("signup", {});
-  });
+  app.get("/signup", authController.signup);
+  res.render("signup", {});
 
   app.post(
     "/signup",
