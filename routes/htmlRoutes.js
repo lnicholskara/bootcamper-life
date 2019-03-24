@@ -9,35 +9,29 @@ module.exports = function(app, passport) {
   });
 
   // "/login" - Login page
-  app.get("/login", function(req, res) {
-    res.render("login", { message: req.flash("loginMessage") });
+  app.get("/signin", function(req, res) {
+    res.render("signin", {});
   });
   app.post(
-    "/login",
+    "/signin",
     passport.authenticate("local-login", {
       successRedirect: "/posts",
-      failureRedirect: "/login",
+      failureRedirect: "/signin",
       failureFlash: true
-    }),
-    function(req, res) {
-      if (req.body.remember) {
-        req.session.cookie.maxAge = 1000 * 60 * 3;
-      } else {
-        req.session.cookie.expires = false;
-      }
-      res.redirect("/");
-    }
+    })
   );
 
   // "/createprofile" - Page with form to create new profile
-  app.get("/signup", authController.signup);
+  app.get("/signup", function(req, res) {
+    res.render("signup", {});
+  });
 
   app.post(
     "/signup",
     passport.authenticate("local-signup", {
       successRedirect: "/posts",
-      failureRedirect: "/signup",
-      failureFlash: true
+
+      failureRedirect: "/signup"
     })
   );
 
@@ -63,6 +57,9 @@ module.exports = function(app, passport) {
   // "/updateprofile" - Page with form to update existing profile
   // "/network" - Load table of user profiles
   // "/posts" - Load main page with a table of posts
+  app.get("/posts", function(req, res) {
+    res.render("posts", {});
+  });
   // "/createpost" - Page with form to create new post
   // "/updatepost" - Page with form to update existing post
 
