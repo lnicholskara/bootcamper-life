@@ -48,6 +48,8 @@ module.exports = function(passport, user) {
               if (newUser) {
                 return done(null, newUser);
               }
+
+              console.log(created);
             });
           }
         });
