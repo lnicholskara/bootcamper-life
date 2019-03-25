@@ -1,94 +1,116 @@
-  <style type="text/css">
-    h3 {
-      color: black;
-      text-decoration: bold;
-    }
+<!-- Navbar -->
+<!-- Fixed navbar -->
+<div id="full-bar">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand">
+      <a class="navbar-brand" id="navLogo">
+        <h1>Bootcamper</h1>
+      </a>
+    </span>
+  </nav>
+</div>
 
-    label {
-      color: gray;
-    }
-  </style>
-  <div id="createAccount">
-    <form id="signup" name="signup" method="post" action="/signup">
-      <h3>Create Account</h3>
-      <div class="row">
-        <div class="col-lg-2">
-          <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="text" name="first_name" class="form-control" id="firstname" placeholder="First Name">
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" class="form-control" id="lastname" placeholder="Last Name">
-          </div>
+<div id="createAccount">
+  <form id="signup" name="signup" method="post" action="/signup">
+    <h3>Create Account</h3>
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="form-group">
+          {{!-- <label for="first_name">First Name</label> --}}
+          <input type="text" name="first_name" class="form-control" id="firstname" placeholder="First Name">
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <form>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
-              <small id="emailHelp" class="form-text text-muted">Your email will be set as
-                your username.</small>
-            </div>
-
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" name="password" class="form-control" id="userPassword" placeholder="Password">
-            </div>
-
-            <div class="form-group">
-              <label for="school">Bootcamp Campus</label>
-              <input type="text" name="school" class="form-control" id="userSchool" placeholder="Enter Your Campus">
-              <span>
-                <small id="gradHelp" class="form-text text-muted">
-                  If still attending, do not check the box.
-                </small>
-              </span>
- 
-              <div class="dropdown">
-                <label class="form-check-label" name="graduated_yet" for="graduated_yet">Graduated yet?</label>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                    Select Answer
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Yes</a>
-                  <a class="dropdown-item" href="#">No</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="city">City</label>
-                    <input type="text" name="city" class="form-control" id="city" placeholder="City">
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="state">State</label>
-                    <input type="text" name="state" class="form-control" id="state" placeholder="State">
-                  </div>
-                </div>
-            </div>
-
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="form-group">
-                  <label for="github_link">Github Portfolio</label>
-                  <input type="text" name="github_link" class="form-control" id="github_link" placeholder="Link to your personal portfolio">
-                </div>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary" id="newAcctSubmit" value="Sign Up">Submit</button>
-          </form>
+      <div class="col-lg-2">
+        <div class="form-group">
+          {{!-- <label for="last_name">Last Name</label> --}}
+          <input type="text" name="last_name" class="form-control" id="lastname" placeholder="Last Name">
         </div>
       </div>
-    </form>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <form>
+          <div class="form-group">
+            {{!-- <label for="email">Email</label> --}}
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+              placeholder="Email">
+            <small id="emailHelp" class="form-text text-muted">Your email will be set as
+              your username.</small>
+          </div>
+
+          <div class="form-group">
+            {{!-- <label for="password">Password</label> --}}
+            <input type="password" name="password" class="form-control" id="userPassword" placeholder="Password">
+          </div>
+          <hr>
+          <div class="form-group">
+            {{!-- <label for="school">Bootcamp Campus</label> --}}
+            <input type="text" name="school" class="form-control" id="userSchool" placeholder="Enter Bootcamp">
+            {{!-- <span>
+              <small id="gradHelp" class="form-text text-muted">
+                If still attending, do not check the box.
+              </small>
+            </span> --}}
+
+            <div class="dropdown">
+              <label class="form-check-label" name="graduated_yet" for="graduated_yet" id="dropdownPrompt">
+                Graduated yet?
+              </label>
+              <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Answer
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Yes</a>
+                <a class="dropdown-item" href="#">No</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                {{!-- <label for="city">City</label> --}}
+                <input type="text" name="city" class="form-control" id="city" placeholder="City">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                {{!-- <label for="state">State</label> --}}
+                <input type="text" name="state" class="form-control" id="state" placeholder="State">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                {{!-- <label for="github_link">Github Portfolio</label> --}}
+                <input type="text" name="github_link" class="form-control" id="github_link"
+                  placeholder="Link to your Github">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-warning" id="newAcctSubmit" value="Sign Up">Submit</button>
+        </form>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div id="footerContent">
+    <div class="row">
+      <div class="col-lg-12">
+        Contributors<br>
+        <a href="https://github.com/" target="_blank">Bao Phan</a><br>
+        <a href="https://github.com/hagharbi" target="_blank">Hamza Agharbi</a><br>
+        <a href="https://github.com/lnicholskara" target="_blank">Kara Nichols</a><br>
+        <a href="https://github.com/dendevpro" target="_blank">Mauro Facciolla</a><br>
+        <p id="copyright">© 2019 Bootcamper</p>
+      </div>
+    </div>
   </div>
+</footer>
