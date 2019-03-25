@@ -4,6 +4,23 @@ module.exports = function(passport, user) {
   var User = user;
 
   var LocalStrategy = require("passport-local").Strategy;
+  //serialize
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  // deserialize user
+  passport.deserializeUser(function(id, done) {
+    User.findById(id).then(function(user) {
+      if (user) {
+        done(null, user.get());
+      } else {
+        done(user.errors, null);
+      }
+    });
+  });
+
+  //LOCAL SIGNUP
   passport.use(
     "local-signup",
     new LocalStrategy(
@@ -35,9 +52,19 @@ module.exports = function(passport, user) {
 
               password: userPassword,
 
-              firstname: req.body.firstname,
+              first_name: req.body.first_name,
 
-              lastname: req.body.lastname
+              last_name: req.body.last_name,
+
+              school: req.body.school,
+
+              graduated_yet: req.body.graduated_yet,
+
+              city: req.body.city,
+
+              state: req.body.state,
+
+              github_link: req.body.github_link
             };
 
             User.create(data).then(function(newUser, created) {
@@ -56,101 +83,56 @@ module.exports = function(passport, user) {
       }
     )
   );
-};
-/*passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    connection.query("SELECT * FROM users WHERE id = ?", [id], function(
-      err,
-      rows
-    ) {
-      done(err, rows[0]);
-    });
-  });
-
+  //LOCAL SIGNIN
   passport.use(
-    "local-signup",
-    new localStrategy(
+    "local-signin",
+    new LocalStrategy(
       {
-        emailField: "email",
-        passwordField: "password_hash",
-        passReqToCallback: true
+        // by default, local strategy uses username and password, we will override with email
+
+        usernameField: "email",
+
+        passwordField: "password",
+
+        passReqToCallback: true // allows us to pass back the entire request to the callback
       },
+
       function(req, email, password, done) {
-        connection.query(
-          "SELECT * FROM users WHERE email = ? ",
-          [email],
-          function(err, rows) {
-            if (err) {
-              return done(err);
-            }
-            if (rows.length) {
-              return done(
-                null,
-                false,
-                req.flash("signupMessage", "That is already taken")
-              );
-            } else {
-              var newUserMysql = {
-                email: email,
-                password: bcrypt.hashSync(password, null, null)
-              };
+        var User = user;
 
-              var insertQuery =
-                "INSERT INTO users (email, password_hash) values (?,?)";
+        var isValidPassword = function(userpass, password) {
+          return bCrypt.compareSync(password, userpass);
+        };
 
-              connection.query(
-                insertQuery,
-                [newUserMysql.email, newUserMysql.password_hash],
-                function(err, rows) {
-                  newUserMysql.id = rows.insertId;
-
-                  return done(null, newUserMysql);
-                }
-              );
-            }
+        User.findOne({
+          where: {
+            email: email
           }
-        );
+        })
+          .then(function(user) {
+            if (!user) {
+              return done(null, false, {
+                message: "Email does not exist"
+              });
+            }
+
+            if (!isValidPassword(user.password, password)) {
+              return done(null, false, {
+                message: "Incorrect password."
+              });
+            }
+
+            var userinfo = user.get();
+            return done(null, userinfo);
+          })
+          .catch(function(err) {
+            console.log("Error:", err);
+
+            return done(null, false, {
+              message: "Something went wrong with your Signin"
+            });
+          });
       }
     )
   );
-
-  passport.use(
-    "local-login",
-    new localStrategy(
-      {
-        emailField: "email",
-        passwordField: "password_hash",
-        passReqToCallback: true
-      },
-      function(req, email, password, done) {
-        connection.query(
-          "SELECT * FROM users WHERE email = ? ",
-          [email],
-          function(err, rows) {
-            if (err) {
-              return done(err);
-            }
-            if (!rows.length) {
-              return done(
-                null,
-                false,
-                req.flash("loginMessage", "No User Found")
-              );
-            }
-            if (!bcrypt.compareSync(password, rows[0].password_hash)) {
-              return done(
-                null,
-                false,
-                req.flash("loginMessage", "Wrong Password")
-              );
-            }
-
-            return done(null, rows[0]);
-          }
-        );
-      }
-    )
-  );*/
+};

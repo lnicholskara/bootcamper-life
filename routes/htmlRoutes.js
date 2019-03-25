@@ -1,38 +1,12 @@
 var db = require("../models");
 
-var authController = require("../controllers/authcontroller.js");
+// var authController = require("../controllers/authcontroller.js");
 
-module.exports = function(app, passport) {
+module.exports = function(app) {
   // Default Code - Load index page
   app.get("/", function(req, res) {
     res.render("index", {});
   });
-
-  // "/login" - Login page
-  app.get("/signin", function(req, res) {
-    res.render("signin", {});
-  });
-  app.post(
-    "/signin",
-    passport.authenticate("local-login", {
-      successRedirect: "/posts",
-      failureRedirect: "/signin",
-      failureFlash: true
-    })
-  );
-
-  // "/createprofile" - Page with form to create new profile
-  app.get("/signup", authController.signup);
-  res.render("signup", {});
-
-  app.post(
-    "/signup",
-    passport.authenticate("local-signup", {
-      successRedirect: "/posts",
-
-      failureRedirect: "/signup"
-    })
-  );
 
   // "/profile" - Page where user lands after login
   app.get("/profile", isLoggedIn, function(req, res) {

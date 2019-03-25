@@ -9,19 +9,19 @@
     }
   </style>
   <div id="createAccount">
-    <form action="" id ="signup" name = "signup" method="post" action="/posts">
+    <form id="signup" name="signup" method="post" action="/signup">
       <h3>Create Account</h3>
       <div class="row">
         <div class="col-lg-2">
           <div class="form-group">
-            <label for="name">First Name</label>
-            <input type="name" class="form-control" id="name" placeholder="First Name">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" class="form-control" id="firstname" placeholder="First Name">
           </div>
         </div>
         <div class="col-lg-2">
           <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="name" class="form-control" id="lastName" placeholder="Last Name">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" class="form-control" id="lastname" placeholder="Last Name">
           </div>
         </div>
       </div>
@@ -29,20 +29,20 @@
         <div class="col-lg-4">
           <form>
             <div class="form-group">
-              <label for="userEmail">Email</label>
-              <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Email">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
               <small id="emailHelp" class="form-text text-muted">Your email will be set as
                 your username.</small>
             </div>
 
             <div class="form-group">
-              <label for="userPassword">Password</label>
-              <input type="password" class="form-control" id="userPassword" placeholder="Password">
+              <label for="password">Password</label>
+              <input type="password" name="password" class="form-control" id="userPassword" placeholder="Password">
             </div>
 
             <div class="form-group">
-              <label for="userSchool">Bootcamp Campus</label>
-              <input type="text" class="form-control" id="userSchool" placeholder="Enter Your Campus">
+              <label for="school">Bootcamp Campus</label>
+              <input type="text" name="school" class="form-control" id="userSchool" placeholder="Enter Your Campus">
               <span>
                 <small id="gradHelp" class="form-text text-muted">
                   If still attending, do not check the box.
@@ -50,7 +50,7 @@
               </span>
  
               <div class="dropdown">
-                <label class="form-check-label" for="gradCheck">Graduated yet?</label>
+                <label class="form-check-label" name="graduated_yet" for="graduated_yet">Graduated yet?</label>
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                     Select Answer
@@ -65,14 +65,14 @@
             <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label for="City">City</label>
-                    <input type="text" class="form-control" id="city" placeholder="City">
+                    <label for="city">City</label>
+                    <input type="text" name="city" class="form-control" id="city" placeholder="City">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label for="State">State</label>
-                    <input type="text" class="form-control" id="state" placeholder="State">
+                    <label for="state">State</label>
+                    <input type="text" name="state" class="form-control" id="state" placeholder="State">
                   </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label for="github_link">Github Portfolio</label>
-                  <input type="text" class="form-control" id="github_link" placeholder="Link to your personal portfolio">
+                  <input type="text" name="github_link" class="form-control" id="github_link" placeholder="Link to your personal portfolio">
                 </div>
               </div>
             </div>
