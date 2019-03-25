@@ -1,8 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define(
+  var User = sequelize.define(
     "User",
     {
       //New Users Setup
+      id: {
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       first_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -23,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: { isEmail: true }
       },
       school: { type: DataTypes.STRING, allowNull: false },
-      graduated_yet: { type: DataTypes.BOOLEAN, allowNull: false },
+      graduated_yet: { type: DataTypes.BOOLEAN, allowNull: true },
       city: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,13 +41,16 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         validate: { len: [2] }
       },
-      github: {
+      github_link: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: { isUrl: true }
       },
-      active: { type: DataTypes.BOOLEAN, defaultValue: true },
-      password_hash: {
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+      },
+      password: {
         type: DataTypes.STRING,
         allowNull: false
       }
@@ -52,12 +60,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   );
   //Count Number of Posts
-  Users.associate = function(models) {
-    Users.hasMany(models.Post, {});
+  User.associate = function(models) {
+    User.hasMany(models.Post, {});
   };
   //Count Number of Comments
-  Users.associate = function(models) {
-    Users.hasMany(models.Comment, {});
+  User.associate = function(models) {
+    User.hasMany(models.Comment, {});
   };
-  return Users;
+  return User;
 };
