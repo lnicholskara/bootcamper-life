@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: { isEmail: true }
       },
       school: { type: DataTypes.STRING, allowNull: false },
-      graduated_yet: { type: DataTypes.BOOLEAN, allowNull: true },
+      graduated_yet: { type: DataTypes.BOOLEAN, allowNull: false },
       city: {
         type: DataTypes.STRING,
         allowNull: false,
