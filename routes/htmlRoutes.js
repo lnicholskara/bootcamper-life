@@ -1,46 +1,25 @@
 /* eslint-disable prettier/prettier */
 var db = require("../models");
 
-// var authController = require("../controllers/authcontroller.js");
-
-module.exports = function (app) {
+module.exports = function(app) {
   // Default Code - Load index page
   app.get("/", function (req, res) {
     res.render("index", {});
   });
 
-  // "/reset" - Page where user resets the password
-  app.get("/reset", function (req, res) {
-    res.render("reset", {});
+  app.get("/createpost", function(req, res) {
+    res.render("createpost", {});
   });
-
-  // "/profile" - Page where user lands after login
-  app.get("/profile", isLoggedIn, function (req, res) {
-    res.render("profile", {
-      user: req.user
-    });
-  });
-
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
-  });
-
-  function isLoggedIn(req, res, next) {
-    if (req.isauthenticated()) {
-      return next();
-    }
-    res.redirect("/");
-  }
 
   // "/updateprofile" - Page with form to update existing profile
   // "/network" - Load table of user profiles
   // "/posts" - Load main page with a table of posts
-  app.get("/posts", function (req, res) {
-    res.render("posts", {});
-  });
   // "/createpost" - Page with form to create new post
   // "/updatepost" - Page with form to update existing post
+
+  app.get("/posts", function(req, res) {
+    res.render("posts", {});
+  });
 
   //************************************************/
   // Load single profile by id
