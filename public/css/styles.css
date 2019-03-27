@@ -1,0 +1,132 @@
+/* GENERAL STYLING */
+* {
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  box-sizing: border-box;
+  line-height: 1.2;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navbar {
+  background: none !important;
+  padding: 0;
+}
+#navLogo{
+  margin: 2rem auto 0 6rem;
+}
+
+.img-responsive {
+  background-image: url("../images/hp-hero-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#cta {
+  margin: 8rem auto 2rem 10rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+/* h2, h3 {
+color: #59bfd7;
+} */
+
+h5 {
+  font-weight: 200;
+  opacity: .7;
+}
+
+hr {
+  border: .0375rem solid white;
+  width: 90%;
+  margin: 2rem auto;
+  opacity: .5;
+}
+
+#signUp,
+#logIn {
+  border-radius: 25px;
+  margin-top: .5rem;
+}
+
+#newAcctSubmit,
+#logSubmit {
+  border-radius: 25px;
+  width: 100%;
+}
+
+/* FORM */
+#emailHelp,
+#gradHelp {
+  font-weight: 200i;
+  color: white !important;
+}
+
+input {
+  border-radius: 25px !important;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+#footerContent {
+  margin-left: 6rem;
+  font-weight: 200;
+}
+
+#copyright {
+  opacity: .5;
+}
+
+/* SIGNIN */
+#logInView {
+  margin: 8rem auto 2rem 10rem;
+}
+
+.form-text {
+  margin: .5rem auto 0 0.8rem;
+  color: white !important;
+}
+
+/* SIGNUP */
+.dropdown {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#dropdownPrompt {
+  font-weight: 500;
+  color: white !important;
+  margin-left: .8rem;
+}
+
+#dropdownMenuButton {
+  border-radius: 25px !important;
+  margin-left: 1rem;
+}
+
+.dropdown-menu {
+  border-radius: 25px !important;
+}
+
+#createAccount {
+  margin: 2rem auto 2rem 10rem;
+}
+
+/* .list-group-item {
+  line-height: 2.5;
+} */
