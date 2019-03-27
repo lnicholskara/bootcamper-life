@@ -1,14 +1,18 @@
-/* eslint-disable prettier/prettier */
-var db = require("../models");
+/* eslint-disable prettier/prettier 
+var db = require("../models");*/
 
 module.exports = function(app) {
   // Default Code - Load index page
-  app.get("/", function (req, res) {
+  app.get("/", function(req, res) {
     res.render("index", {});
   });
 
   app.get("/createpost", function(req, res) {
     res.render("createpost", {});
+  });
+
+  app.get("/posts/:id", function(req, res) {
+    res.render("single-post", { postID: req.params.id });
   });
 
   // "/updateprofile" - Page with form to update existing profile
@@ -22,34 +26,9 @@ module.exports = function(app) {
   });
 
   //************************************************/
-  // Load single profile by id
-
-  app.get("/profile/:id", function (req, res) {
-    db.Profile.findOne({ where: { id: req.params.id } }).then(function (
-      oneProfile
-    ) {
-      res.render("singleProfile", {
-        profile: oneProfile
-      });
-    });
-  });
-
-  // Load single post by id
-  app.get("/posts/:id", function (req, res) {
-    db.Profile.findOne({
-      where: { id: req.params.id },
-      include: [db.Profile]
-    }).then(function (onePost) {
-      res.render("singleProfile", {
-        post: onePost
-      });
-    });
-    // Add in code to findAll Comments associated with the post
-  });
-  //************************************************/
   // Render 404 page for any unmatched routes
 
-  app.get("*", function (req, res) {
+  app.get("*", function(req, res) {
     res.render("404");
   });
 };
