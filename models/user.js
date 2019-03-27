@@ -59,12 +59,9 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true
     }
   );
-  //Count Number of Posts
+  //Count Number of Posts + Comments
   User.associate = function(models) {
     User.hasMany(models.Post, {});
-  };
-  //Count Number of Comments
-  User.associate = function(models) {
     User.hasMany(models.Comment, {});
   };
   return User;

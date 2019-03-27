@@ -18,16 +18,13 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true
     }
   );
-  //Associate Post to Profile
+  //Associate Comment to User and Post
   Comment.associate = function(models) {
-    Comment.belongsTo(models.Users, {
+    Comment.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
-  };
-  //Associate Post to Profile
-  Comment.associate = function(models) {
     Comment.belongsTo(models.Post, {
       foreignKey: {
         allowNull: false
