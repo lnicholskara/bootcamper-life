@@ -11,8 +11,8 @@ module.exports = {
   },
   test: {
     username: "root",
-    password: null,
-    database: "testdb",
+    password: process.env.MYSQL_PASS,
+    database: "bootcamptest_db",
     host: "localhost",
     dialect: "mysql",
     logging: false
