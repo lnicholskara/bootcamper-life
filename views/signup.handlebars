@@ -46,25 +46,17 @@
           <div class="form-group">
             {{!-- <label for="school">Bootcamp Campus</label> --}}
             <input type="text" name="school" class="form-control" id="userSchool" placeholder="Enter Bootcamp">
-            {{!-- <span>
-              <small id="gradHelp" class="form-text text-muted">
-                If still attending, do not check the box.
-              </small>
-            </span> --}}
 
             <div class="dropdown">
-              <label class="form-check-label" name="graduated_yet" for="graduated_yet" id="dropdownPrompt">
+              <label class="form-check-label radio-inline" name="graduated_yet" for="graduated_yet" id="dropdownPrompt">
                 Graduated yet?
               </label>
-              <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Answer
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Yes</a>
-                <a class="dropdown-item" href="#">No</a>
-              </div>
+              <label class="radio-inline">
+                <input type="radio" name="graduated_yet" for="graduated_yet" id="inlineRadio1" value="true">Yes</label>
+              <label class="radio-inline">
+                <input type="radio" name="graduated_yet" for="graduated_yet" id="inlineRadio2" value="false">No</label>
             </div>
+
           </div>
 
           <div class="row">
@@ -99,18 +91,3 @@
   </form>
 </div>
 
-<!-- FOOTER -->
-<!--<footer class="footer float-right">
-  <div id="footerContent">
-    <div class="row">
-      <div class="col-lg-12">
-        Contributors<br>
-        <a href="https://github.com/" target="_blank">Bao Phan</a><br>
-        <a href="https://github.com/hagharbi" target="_blank">Hamza Agharbi</a><br>
-        <a href="https://github.com/lnicholskara" target="_blank">Kara Nichols</a><br>
-        <a href="https://github.com/dendevpro" target="_blank">Mauro Facciolla</a><br>
-        <p id="copyright">© 2019 Bootcamper</p>
-      </div>
-    </div>
-  </div>
-</footer>
