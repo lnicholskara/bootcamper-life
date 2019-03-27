@@ -32,17 +32,15 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true
     }
   );
-  //Associate Post to Profile
+  //Associate Post to User + Has many comments
   Post.associate = function(models) {
-    Post.belongsTo(models.Users, {
+    Post.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
-  };
-  //Count Number of Comments Per Post
-  Post.associate = function(models) {
     Post.hasMany(models.Comment, {});
   };
+
   return Post;
 };
