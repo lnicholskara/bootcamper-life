@@ -53,7 +53,10 @@ module.exports = function(app) {
 
   // Create a new post
   app.post("/api/posts", function(req, res) {
-    db.Post.create(req.body).then(function(dbPost) {
+    var newPost = req.body;
+    newPost.UserId = req.user.id;
+
+    db.Post.create(newPost).then(function(dbPost) {
       res.json(dbPost);
     });
   });
