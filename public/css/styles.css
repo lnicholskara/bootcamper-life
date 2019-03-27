@@ -76,7 +76,7 @@ input {
 }
 
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   padding: 1rem 0;
@@ -93,6 +93,11 @@ input {
 
 /* SIGNIN */
 #logInView {
+  margin: 8rem auto 2rem 10rem;
+}
+
+/* RESET */
+#resetPassView {
   margin: 8rem auto 2rem 10rem;
 }
 
