@@ -1,8 +1,9 @@
+/* eslint-disable prettier/prettier */
 var db = require("../models");
 
 module.exports = function(app) {
   // Default Code - Load index page
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     res.render("index", {});
   });
 
@@ -23,8 +24,8 @@ module.exports = function(app) {
   //************************************************/
   // Load single profile by id
 
-  app.get("/profile/:id", function(req, res) {
-    db.Profile.findOne({ where: { id: req.params.id } }).then(function(
+  app.get("/profile/:id", function (req, res) {
+    db.Profile.findOne({ where: { id: req.params.id } }).then(function (
       oneProfile
     ) {
       res.render("singleProfile", {
@@ -34,11 +35,11 @@ module.exports = function(app) {
   });
 
   // Load single post by id
-  app.get("/posts/:id", function(req, res) {
+  app.get("/posts/:id", function (req, res) {
     db.Profile.findOne({
       where: { id: req.params.id },
       include: [db.Profile]
-    }).then(function(onePost) {
+    }).then(function (onePost) {
       res.render("singleProfile", {
         post: onePost
       });
@@ -48,7 +49,7 @@ module.exports = function(app) {
   //************************************************/
   // Render 404 page for any unmatched routes
 
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
 };

@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 // ********************************************* //
 // ***************  DO NOT TOUCH *************** //
 // ********************************************* //
 
 // TYPEWRITER FOR H3 //
+
 document.addEventListener("DOMContentLoaded", function(event) {
   // array with texts to type in typewriter
   var dataText = [
@@ -41,7 +43,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // check if dataText[i] exists
     if (i < dataText.length) {
       // text exists! start typewriter animation
+
       typeWriter(dataText[i], 0, function() {
+
         // after callback (and whole text has been animated), start next text
         StartTextAnimation(i + 1);
       });
