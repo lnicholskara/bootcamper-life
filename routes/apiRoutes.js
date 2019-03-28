@@ -5,42 +5,60 @@ module.exports = function(app) {
   // Get all users
   // GET route for getting all of the posts
   app.get("/api/posts", function(req, res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    // Here we add an "include" property to our options in our findAll query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Author
     db.Post.findAll({
-      where: query,
+      where: { active: true },
+      order: [["id", "DESC"]],
       include: [db.User]
     }).then(function(dbPost) {
       res.json(dbPost);
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
-    db.User.findAll({ include: [db.Profile, db.Comment] }).then(function(
-      allProfiles
-    ) {
+  app.get("/api/posts/:id", function(req, res) {
+    db.Post.findOne({
+      where: { id: req.params.id, active: true },
+      include: [db.User]
+    }).then(function(onePost) {
+      res.json(onePost);
+    });
+  });
+
+  app.get("/api/users/", function(req, res) {
+    db.User.findAll({
+      where: { active: true },
+      order: [["id", "DESC"]],
+      include: [db.Post]
+    }).then(function(allProfiles) {
       res.json(allProfiles);
     });
   });
 
-  // Get all posts
-  app.get("/api/posts", function(req, res) {
-    db.Post.findAll({}).then(function(allPosts) {
-      res.json(allPosts);
+  app.get("/api/users/:id", function(req, res) {
+    db.User.findByPk(req.params.id).then(function(oneUser) {
+      res.json(oneUser);
     });
   });
 
   // Get all comments
   app.get("/api/comments", function(req, res) {
-    db.Comment.findAll({ include: [db.Profile, db.Post] }).then(function(
-      allComments
-    ) {
+    db.Comment.findAll({
+      where: { active: true },
+      order: [["votes", "DESC"]]
+    }).then(function(allComments) {
       res.json(allComments);
+    });
+  });
+  // Get comments for one specific post
+  app.get("/api/comments/:id", function(req, res) {
+    db.Comment.findAll({
+      where: {
+        PostId: req.params.id,
+        active: true
+      },
+      include: [db.User],
+      order: [["votes", "DESC"]]
+    }).then(function(commentsPerPost) {
+      res.json(commentsPerPost);
     });
   });
   //******************** CREATE ****************************/
@@ -53,15 +71,19 @@ module.exports = function(app) {
 
   // Create a new post
   app.post("/api/posts", function(req, res) {
-    db.Post.create(req.body).then(function(dbPost) {
+    var newPost = req.body;
+    newPost.UserId = req.user.id;
+    db.Post.create(newPost).then(function(dbPost) {
       res.json(dbPost);
     });
   });
 
   // Create a new comment
   app.post("/api/comments", function(req, res) {
-    db.Comment.create(req.body).then(function(newComment) {
-      res.json(newComment);
+    var newComment = req.body;
+    newComment.UserId = req.user.id;
+    db.Comment.create(newComment).then(function(dbComment) {
+      res.json(dbComment);
     });
   });
   //********************* UPDATE ***************************/
@@ -84,6 +106,17 @@ module.exports = function(app) {
       }
     }).then(function(updatedPost) {
       res.json(updatedPost);
+    });
+  });
+  //********************* DELETE ***************************/
+  //Soft delete for comments
+  app.put("/api/comments/:id", function(req, res) {
+    db.Comment.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(softDelComment) {
+      res.json(softDelComment);
     });
   });
 };
