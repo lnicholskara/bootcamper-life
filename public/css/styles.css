@@ -36,20 +36,15 @@ h1 {
   font-weight: 700;
 }
 
-/* h2, h3 {
-color: #59bfd7;
-} */
-
-h5 {
-  font-weight: 200;
-  opacity: .7;
-}
-
 hr {
   border: .0375rem solid white;
-  width: 90%;
+  /* width: 90%; */
   margin: 2rem auto;
   opacity: .5;
+}
+
+a:hover { 
+  color: white !important; 
 }
 
 #signUp,
@@ -129,19 +124,5 @@ input {
 }
 
 #createAccount {
-  margin: 2rem auto 2rem 10rem;
+  margin: 4rem auto 2rem 10rem;
 }
-
-#singlePost, .comment, #post_Body, #post_Title, #post_Author, #commentForm, #black, #commentContainer, #black-text, #black-comment, #black-author {
-  color: black;
-}
-
-#post_UpdatedAt, #grey-date {
-  color: gray;
-  font-style: italic;
-  font-size: 75%;
-}
-
-/* .list-group-item {
-  line-height: 2.5;
-} */
