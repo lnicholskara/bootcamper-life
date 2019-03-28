@@ -5,19 +5,30 @@ module.exports = function(app) {
   // Get all users
   // GET route for getting all of the posts
   app.get("/api/posts", function(req, res) {
-    db.Post.findAll({ order: [["id", "DESC"]] }).then(function(dbPost) {
+    db.Post.findAll({
+      where: { active: true },
+      order: [["id", "DESC"]],
+      include: [db.User]
+    }).then(function(dbPost) {
       res.json(dbPost);
     });
   });
 
   app.get("/api/posts/:id", function(req, res) {
-    db.Post.findByPk(req.params.id).then(function(onePost) {
+    db.Post.findOne({
+      where: { id: req.params.id, active: true },
+      include: [db.User]
+    }).then(function(onePost) {
       res.json(onePost);
     });
   });
 
   app.get("/api/users/", function(req, res) {
-    db.User.findAll({ order: [["id", "DESC"]] }).then(function(allProfiles) {
+    db.User.findAll({
+      where: { active: true },
+      order: [["id", "DESC"]],
+      include: [db.Post]
+    }).then(function(allProfiles) {
       res.json(allProfiles);
     });
   });
@@ -30,9 +41,10 @@ module.exports = function(app) {
 
   // Get all comments
   app.get("/api/comments", function(req, res) {
-    db.Comment.findAll({ order: [["votes", "DESC"]] }).then(function(
-      allComments
-    ) {
+    db.Comment.findAll({
+      where: { active: true },
+      order: [["votes", "DESC"]]
+    }).then(function(allComments) {
       res.json(allComments);
     });
   });
@@ -40,8 +52,10 @@ module.exports = function(app) {
   app.get("/api/comments/:id", function(req, res) {
     db.Comment.findAll({
       where: {
-        PostId: req.body.id
+        PostId: req.params.id,
+        active: true
       },
+      include: [db.User],
       order: [["votes", "DESC"]]
     }).then(function(commentsPerPost) {
       res.json(commentsPerPost);
