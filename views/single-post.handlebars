@@ -84,9 +84,10 @@
         margin: 0 0 .5rem 1rem;
     }
 
-    #newPostBtn {
+    #submitComment {
         border-radius: 35px;
-        margin: 1rem 2rem 0 auto;
+        margin: 0 auto 0 auto;
+        border: none;
         color: white;
         text-align: center;
     }
@@ -112,26 +113,27 @@
     .separator-lg {
         border: 1px solid #555;
         color: black;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
 
     }
 
-    #postBody {
+    #post_Body {
         margin: 2rem 0 2rem 2rem;
     }
 
-    #author {
+    #post_Author {
         font-size: .85rem;
         text-align: right;
-        margin-right: 0;
+        margin-right: 1rem;
     }
 
-    #category {
+    #post_Category {
         border-radius: 25px;
+        margin-left: 1rem;
     }
 
     .comment {
-        margin: 1rem 0 1rem 2rem;
+        margin: 1rem;
     }
 </style>
 
@@ -175,70 +177,67 @@
             </div>
         </nav>
     </div>
-    <div class="row">
-        <div class="col-lg-2" id="btn-div">
-            <button class="btn btn-lg btn-dark" id="newPostBtn">Create New Post</button>
-        </div>
-    </div>
 
     <!-- SINGLE POST -->
     <div class="container">
         <div class="row" id="singlePost">
             <div class="col-lg-10">
-                <h2>Title</h2>
+                <h2 id="post_Title">Title</h2>
             </div>
             <div class="col-lg-2">
-                <div class="col-lg-4">
-                    <h4><span class="badge badge-secondary" id="category">Category</span></h4>
-                </div>
+                <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
+                <h3>Avatar</h3>
+                <!-- </canvas> -->
+            </div>
+        </div>
+        <hr class="separator-lg">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4><span class="badge badge-secondary" id="post_Category">Category</span></h4>
+            </div>
+            <div class="col-lg-6">
+                <p id="post_Author">Username | <em>03/26/2019 12:08:46am</em></p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12">
-                <dic class="card">
+                <div class="card">
                     <div class="card-header">
-                        <h5 id="postBody">Lorem Ipsum is simply dummy text of the printing and typesetting
+                        <h5 id="post_Body">Lorem Ipsum is simply dummy text of the printing and typesetting
                             industry. Lorem Ipsum has been the industry's standard.</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h6 class="comment">– Reply 1: Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is
-                                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                    industry's standard.</h6>
+                                <h5 id="post_Body">
+                                    COMMENT - Lorem Ipsum is simply dummy text of the printing and typesetting.
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                                </h5>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-12">
-                                <h6 class="comment">– Reply 2: Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is
-                                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                    industry's standard.</h6>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-12">
-
+                                <form class="clearfix mt-4 mb-4" id="commentForm" action="/api/comments" method="POST">
+                                    <div class="form-group comment">
+                                        <label for="comment-body" id="black"></label>
+                                        <textarea class="form-control" name="comment-body" id="comment-body"
+                                            aria-describedby="post-body"
+                                            placeholder="Write your comment here"></textarea>
+                                    </div>
+                                    <button id="submitComment" class="btn btn-info">Submit</button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </dic>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <!-- <footer class="footer">
-        <div id="footerContent">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>© 2019 Bootcamper</p>
-                </div>
-            </div>
-        </div>
-    </footer> -->
+    <!-- Custom Script -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+    <script src="js/postandcomments.js" type="text/javascript"></script>
 </body>
