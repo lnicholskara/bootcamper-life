@@ -11,7 +11,7 @@ module.exports = function(app) {
     res.render("createpost", {});
   });
 
-  app.get("/posts/:id", function(req, res) {
+  app.get("/posts=:id", function(req, res) {
     res.render("single-post", { postID: req.params.id });
   });
 
