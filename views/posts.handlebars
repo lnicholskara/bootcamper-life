@@ -1,11 +1,160 @@
-<p style="color:green">Successfully logged in!</p>
+<style>
+    * {
+        font-family: 'Nunito', sans-serif;
+        color: #333;
+        box-sizing: border-box;
+        line-height: 1.2;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        /* background: linear-gradient(to bottom, rgb(220, 220, 220),  rgb(220, 220, 220), rgb(112, 103, 182, 1)); */
+    }
+
+    .navbar {
+        /* position: fixed;
+    top: 0; */
+        background: linear-gradient(to right, rgb(0, 40, 162), rgb(155, 64, 224)) !important;
+        padding: 0;
+        width: 100%;
+        opacity: .7;
+    }
+
+    #navLogo {
+        margin: 2rem auto 0 6rem;
+        color: white;
+    }
+
+    .navbar-nav {
+        margin: 2rem 5rem 0 auto;
+    }
+
+    .nav-item {
+        margin-right: 1rem;
+    }
+
+    .img-responsive {
+        background-image: url("../images/portal-bg-01.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    h1 {
+        color: white;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    h3 {
+        color: #333;
+        font-weight: 700;
+        margin: 1rem auto 0 2rem;
+    }
+
+    h4 {
+        color: white;
+    }
+
+    p,
+    em,
+    h5,
+    h6 {
+        color: #333;
+    }
+
+    h4:hover {
+        color: #E2B3FA !important;
+    }
+
+    /* CONTENT */
+    #post,
+    #singlePost {
+        margin: 6rem auto 0;
+    }
+
+    .dash-tab {
+        margin: 0 0 .5rem 1rem;
+    }
+
+    #btn-div {
+        position: fixed;
+        right: -40px;
+        padding: 0;
+        margin: 6rem 0 0 1rem;
+        z-index: 1000;
+        overflow: hidden;
+
+    }
+
+    #newPostBtn {
+        border-radius: 35px;
+        background: #9A6ECF !important;
+        border: none;
+        color: white;
+        text-align: center;
+    }
+
+    #newPostBtn:hover {
+        background: #4966B4 !important;
+    }
+
+    #user-icon {
+        text-align: center;
+    }
+
+    .card {
+        /* opacity: 0.7; */
+        box-shadow: 0px 1px 30px #999;
+    }
+
+    .card-body {
+        padding: .375rem;
+        margin: 0 3rem;
+    }
+
+    hr {
+        margin: 0 auto;
+    }
+
+    .separator-lg {
+        border: 1px solid #555;
+        color: black;
+        margin-bottom: 3rem;
+
+    }
+
+    #postBody {
+        margin: 2rem 0 2rem 2rem;
+    }
+
+    #author {
+        font-size: .85rem;
+        text-align: right;
+        margin-right: 0;
+    }
+
+    #category {
+        border-radius: 25px;
+    }
+
+    .comment {
+        margin: 1rem 0 1rem 2rem;
+    }
+</style>
 
 <body class="img-responsive">
-
     <!-- Navbar -->
     <!-- Fixed navbar -->
     <div id="full-bar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <span class="navbar-brand">
                 <div class="navbar-brand" id="navLogo">
                     <h1>Bootcamper</h1>
@@ -19,78 +168,99 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>My Account</h5>
+                            <h4>My Account</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>Posts</h5>
+                            <h4>Posts</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>Network</h5>
+                            <h4>Network</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>Logout</h5>
+                            <h4>Logout</h4>
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
+    <div class="row">
+        <div class="col-lg-2" id="btn-div">
+            <button class="btn btn-lg btn-dark" id="newPostBtn">Create New Post</button>
+        </div>
+    </div>
+
 
     <!-- POSTS -->
     <div class="container">
         <div class="row" id="post">
-            <div class="col-lg-10">
+            <div class="col-lg-9">
                 <h2>Posts</h2>
             </div>
-            <div class="col-lg-2">
-                <button class="btn btn-lg btn-warning" id="newPostBtn">New Post</button>
-            </div>
+
         </div>
+        <hr class="separator-lg">
 
         <div class="row">
             <div class="col-lg-12">
-                <dic class="card">
+                <div class="card">
                     <div class="card-header">
-                        <h3>Title</h3>
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h3>
+                                    {{this.title}}
+                                    Title</h3>
+                            </div>
+                            <div class="col-lg-2">
+                                <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
+                                <h3>Avatar</h3>
+                                <!-- </canvas> -->
+
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-4">
-                                <h6>Category: <span class="badge badge-secondary" id="category">Category</span></h6>
+                                <h6>
+                                    Category:
+                                    <span class="badge badge-secondary" id="category">
+                                        {{this.category}}
+                                        Category
+                                    </span>
+                                </h6>
                             </div>
                             <div class="col-lg-8">
                                 <a href="">
-                                    <p id="author">Username | <em>03/26/2019 12:08:46am</em></p>
+                                    <p id="author">
+                                        {{this.email}}
+                                        Username |
+                                        <em>
+                                            {{Post.createdat}}
+                                            03/26/2019 12:08:46am
+                                        </em>
+                                    </p>
                                 </a>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-12">
-                                <h5 id="postBody">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                <h5 id="postBody">
+                                    {{this.body}}
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting
                                     industry. Lorem Ipsum has been the industry's standard.</h5>
                             </div>
                         </div>
                     </div>
-                </dic>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div id="footerContent">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>© 2019 Bootcamper</p>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 </body>

@@ -1,26 +1,221 @@
-<div id="home">
-  <div class="container">
-    <div class="row mt-4">
-      <div class="col-8 offset-2">
-        <form class="clearfix mb-4" id = "postForm" action="/api/posts" method= "POST">
-          <div class="form-group">
-            <label for="title">Post Title</label>
-            <input type="text" name= "title" id="post-title" class="form-control" aria-describedby="post-title">
-          </div>
-          <div class="form-group">
-            <label for="category">Post Category</label>
-            <input type="text" name= "category" id="post-category" class="form-control" aria-describedby="post-category">
-          </div>
-          <div class="form-group">
-            <label for="body">Post Body</label>
-            <textarea class="form-control" name = "body" id="post-body" aria-describedby="post-body"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
+<style>
+  * {
+    font-family: 'Nunito', sans-serif;
+    color: #333;
+    box-sizing: border-box;
+    line-height: 1.2;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    background: linear-gradient(to right, rgb(0, 40, 162), rgb(155, 64, 224)) !important;
+    padding: 0;
+    width: 100%;
+    opacity: .7;
+  }
+
+  #navLogo {
+    margin: 2rem auto 0 6rem;
+    color: white;
+  }
+
+  .navbar-nav {
+    margin: 2rem 5rem 0 auto;
+  }
+
+  .nav-item {
+    margin-right: 1rem;
+  }
+
+  .img-responsive {
+    background-image: url("../images/portal-bg-01.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    color: #333;
+    font-weight: 700;
+  }
+
+  h4 {
+    color: white;
+  }
+
+  p,
+  em,
+  h5,
+  h6 {
+    color: #333;
+  }
+
+  h4:hover {
+    color: #E2B3FA !important;
+  }
+
+  /* CONTENT */
+  #home {
+    margin: 6rem auto 0;
+  }
+
+  .dash-tab {
+    margin: 0 0 .5rem 1rem;
+  }
+
+  #submit {
+    border-radius: 35px;
+    background: #9A6ECF !important;
+    border: none;
+    color: white;
+    width: 100%;
+    text-align: center;
+  }
+
+  #submit:hover {
+    background: #4966B4 !important;
+  }
+
+
+  #post-body {
+    /*border-radius: 35px;*/
+  }
+
+  #user-icon {
+    text-align: center;
+  }
+
+  .card {
+    box-shadow: 0px 1px 30px #999;
+  }
+
+  .card-body {
+    padding: .375rem;
+    margin: 0 3rem;
+  }
+
+  hr {
+    margin: 0 auto;
+  }
+
+  .separator-lg {
+    border: 1px solid #555;
+    color: black;
+    margin-bottom: 3rem;
+
+  }
+
+  #postBody {
+    margin: 2rem 0 2rem 2rem;
+  }
+
+  #author {
+    font-size: .85rem;
+    text-align: right;
+    margin-right: 0;
+  }
+
+  #category {
+    border-radius: 25px;
+  }
+
+  .comment {
+    margin: 1rem 0 1rem 2rem;
+  }
+</style>
+
+<body class="img-responsive">
+  <!-- Navbar -->
+  <!-- Fixed navbar -->
+  <div id="full-bar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <span class="navbar-brand">
+        <div class="navbar-brand" id="navLogo">
+          <h1>Bootcamper</h1>
+        </div>
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#logout" aria-controls="logout"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="logout">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <h4>My Account</h4>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <h4>Posts</h4>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <h4>Network</h4>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <h4>Logout</h4>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div id="home">
+    <div class="container">
+      <div class="row">
+        <div class=" col-lg-6" id="form">
+          <h3>New Post</h3>
+          <form class="clearfix" id="postForm" action="/api/posts" method="POST">
+            <div class="form-group">
+              {{!-- <label for="title"></label> --}}
+              <input type="text" name="title" id="post-title" class="form-control" aria-describedby="post-title"
+                placeholder="Title">
+            </div>
+            <div class="form-group">
+              {{!-- <label for="category"></label> --}}
+              <input type="text" name="category" id="post-category" class="form-control"
+                aria-describedby="post-category" placeholder="Category">
+            </div>
+            <div class="form-group">
+              {{!-- <label for="body"></label> --}}
+              <textarea class="form-control" name="body" id="post-body" aria-describedby="post-body"
+                placeholder="Write your post here"></textarea>
+            </div>
+            <button id="submit" class="btn btn-dark">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  <!-- Custom Script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
-  <script src="js/posts.js" type="text/javascript"></script>
+</body>
+
+{{!-- Moment.js --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+<!-- Custom Script -->
+<script src="js/posts.js" type="text/javascript"></script>

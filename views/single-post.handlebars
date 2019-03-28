@@ -1,9 +1,145 @@
-<body class="img-responsive">
+<style>
+    * {
+        font-family: 'Nunito', sans-serif;
+        color: #333 !important;
+        box-sizing: border-box;
+        line-height: 1.2;
+    }
 
+    body {
+        margin: 0;
+        padding: 0;
+        /* background: linear-gradient(to bottom, rgb(220, 220, 220),  rgb(220, 220, 220), rgb(112, 103, 182, 1)); */
+    }
+
+    .navbar {
+        /* position: fixed;
+    top: 0; */
+        background: linear-gradient(to right, rgb(0, 40, 162), rgb(155, 64, 224)) !important;
+        padding: 0;
+        width: 100%;
+        opacity: .7;
+    }
+
+    #navLogo {
+        margin: 2rem auto 0 6rem;
+        color: white;
+    }
+
+    .navbar-nav {
+        margin: 2rem 5rem 0 auto;
+    }
+
+    .nav-item {
+        margin-right: 1rem;
+    }
+
+    .img-responsive {
+        background-image: url("../images/portal-bg-01.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    h1 {
+        color: white;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    h3 {
+        color: #333;
+        font-weight: 700;
+        margin: 1rem auto 0 2rem;
+    }
+
+    h4 {
+        color: white;
+    }
+
+    p,
+    em,
+    h5,
+    h6 {
+        color: #333;
+    }
+
+    h4:hover {
+        color: #E2B3FA !important;
+    }
+
+    /* CONTENT */
+    #post,
+    #singlePost {
+        margin: 6rem auto 0;
+    }
+
+    .dash-tab {
+        margin: 0 0 .5rem 1rem;
+    }
+
+    #newPostBtn {
+        border-radius: 35px;
+        margin: 1rem 2rem 0 auto;
+        color: white;
+        text-align: center;
+    }
+
+    #user-icon {
+        text-align: center;
+    }
+
+    .card {
+        /* opacity: 0.7; */
+        box-shadow: 0px 1px 30px #999;
+    }
+
+    .card-body {
+        padding: .375rem;
+        margin: 0 3rem;
+    }
+
+    hr {
+        margin: 0 auto;
+    }
+
+    .separator-lg {
+        border: 1px solid #555;
+        color: black;
+        margin-bottom: 3rem;
+
+    }
+
+    #postBody {
+        margin: 2rem 0 2rem 2rem;
+    }
+
+    #author {
+        font-size: .85rem;
+        text-align: right;
+        margin-right: 0;
+    }
+
+    #category {
+        border-radius: 25px;
+    }
+
+    .comment {
+        margin: 1rem 0 1rem 2rem;
+    }
+</style>
+
+<body class="img-responsive">
     <!-- Navbar -->
     <!-- Fixed navbar -->
     <div id="full-bar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <span class="navbar-brand">
                 <div class="navbar-brand" id="navLogo">
                     <h1>Bootcamper</h1>
@@ -17,79 +153,86 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>My Account</h5>
+                            <h4>My Account</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>Posts</h5>
+                            <h4>Posts</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>Network</h5>
+                            <h4>Network</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <h5>Logout</h5>
+                            <h4>Logout</h4>
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
+    <div class="row">
+        <div class="col-lg-2" id="btn-div">
+            <button class="btn btn-lg btn-dark" id="newPostBtn">Create New Post</button>
+        </div>
+    </div>
 
     <!-- SINGLE POST -->
-    <div class="row" id="singlePost">
-        <div class="col-lg-10">
-            <h2>Title</h2>
+    <div class="container">
+        <div class="row" id="singlePost">
+            <div class="col-lg-10">
+                <h2>Title</h2>
+            </div>
+            <div class="col-lg-2">
+                <div class="col-lg-4">
+                    <h4><span class="badge badge-secondary" id="category">Category</span></h4>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-2">
-            <div class="col-lg-4">
-                <h4><span class="badge badge-secondary" id="category">Category</span></h6>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <dic class="card">
+                    <div class="card-header">
+                        <h5 id="postBody">Lorem Ipsum is simply dummy text of the printing and typesetting
+                            industry. Lorem Ipsum has been the industry's standard.</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h6 class="comment">– Reply 1: Lorem Ipsum is simply dummy text of the printing and
+                                    typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is
+                                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                                    industry's standard.</h6>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h6 class="comment">– Reply 2: Lorem Ipsum is simply dummy text of the printing and
+                                    typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is
+                                    simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                                    industry's standard.</h6>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                            </div>
+                        </div>
+                    </div>
+                </dic>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <dic class="card">
-                <div class="card-header">
-                    <h5 id="postBody">Lorem Ipsum is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry's standard.</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h6 class="comment">– Reply 1: Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is
-                                simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                industry's standard.</h6>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h6 class="comment">– Reply 2: Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is
-                                simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                industry's standard.</h6>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-12">
-
-                        </div>
-                    </div>
-                </div>
-            </dic>
-        </div>
-    </div>
-
     <!-- FOOTER -->
-    <footer class="footer">
+    <!-- <footer class="footer">
         <div id="footerContent">
             <div class="row">
                 <div class="col-lg-12">
@@ -97,5 +240,5 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 </body>
