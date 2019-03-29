@@ -36,6 +36,7 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/authRoute")(app, passport);
 require("./routes/apiRoutes")(app, passport);
+require("./routes/userAPIroutes")(app, passport);
 require("./routes/htmlRoutes")(app, passport);
 
 require("./config/passport")(passport, db.User);

@@ -3,9 +3,9 @@ $(document).ready(function() {
   var postTitle = $("#post-title");
   var postCategory = $("#post-category");
   var postBody = $("#post-body");
-  var cmsForm = $("#cms");
+  var postForm = $("#postForm");
   // Adding an event listener for when the form is submitted
-  $(cmsForm).on("submit", handleFormSubmit);
+  $(postForm).on("submit", handleFormSubmit);
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
@@ -30,7 +30,7 @@ $(document).ready(function() {
   // Submits a new post and brings user to blog page upon completion
   function submitPost(post) {
     $.post("/api/posts", post, function() {
-      window.location.href = "/posts";
+      window.location.replace("/posts");
     });
   }
 });
