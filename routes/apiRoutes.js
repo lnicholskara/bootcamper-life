@@ -23,22 +23,6 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/", function(req, res) {
-    db.User.findAll({
-      where: { active: true },
-      order: [["id", "DESC"]],
-      include: [db.Post]
-    }).then(function(allProfiles) {
-      res.json(allProfiles);
-    });
-  });
-
-  app.get("/api/users/:id", function(req, res) {
-    db.User.findByPk(req.params.id).then(function(oneUser) {
-      res.json(oneUser);
-    });
-  });
-
   // Get all comments
   app.get("/api/comments", function(req, res) {
     db.Comment.findAll({
@@ -62,12 +46,6 @@ module.exports = function(app) {
     });
   });
   //******************** CREATE ****************************/
-  // Create a new user
-  app.post("/api/users", function(req, res) {
-    db.User.create(req.body).then(function(newProfile) {
-      res.json(newProfile);
-    });
-  });
 
   // Create a new post
   app.post("/api/posts", function(req, res) {
@@ -87,16 +65,6 @@ module.exports = function(app) {
     });
   });
   //********************* UPDATE ***************************/
-  // Update user
-  app.put("/api/users/:id", function(req, res) {
-    db.User.update(req.body, {
-      where: {
-        id: req.params.id
-      }
-    }).then(function(updatedProfile) {
-      res.json(updatedProfile);
-    });
-  });
 
   // Update post
   app.put("/api/posts/:id", function(req, res) {
