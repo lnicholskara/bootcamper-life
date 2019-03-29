@@ -1,3 +1,19 @@
+<style>
+  #create-acct {
+    color: white;
+  }
+
+  .radio-inline {
+    margin: 0.2rem .5rem 0 .5rem;
+    color: white;
+  }
+
+  #inlineRadio1,
+  #inlineRadio2 {
+    margin-right: .5rem;
+  }
+</style>
+
 <!-- Navbar -->
 <!-- Fixed navbar -->
 <div id="full-bar">
@@ -10,9 +26,10 @@
   </nav>
 </div>
 
+{{!-- Create account Form --}}
 <div id="createAccount">
   <form id="signup" name="signup" method="post" action="/signup">
-    <h3>Create Account</h3>
+    <h3 id="create-acct">Create Account</h3>
     <div class="row">
       <div class="col-lg-2">
         <div class="form-group">
@@ -40,7 +57,8 @@
 
           <div class="form-group">
             {{!-- <label for="password">Password</label> --}}
-            <input type="password" name="password" class="form-control" id="userPassword" placeholder="Password" required>
+            <input type="password" name="password" class="form-control" id="userPassword" placeholder="Password"
+              required>
           </div>
           <hr>
           <div class="form-group">
@@ -53,9 +71,11 @@
                 Graduated yet?
               </label>
               <label class="radio-inline">
-                <input type="radio" name="graduated_yet" for="graduated_yet" id="inlineRadio1" value="true" required>Yes</label>
+                <input type="radio" name="graduated_yet" for="graduated_yet" id="inlineRadio1" value="true"
+                  required>Yes</label>
               <label class="radio-inline">
-                <input type="radio" name="graduated_yet" for="graduated_yet" id="inlineRadio2" value="false" required>No</label>
+                <input type="radio" name="graduated_yet" for="graduated_yet" id="inlineRadio2" value="false"
+                  required>No</label>
             </div>
 
           </div>
@@ -70,7 +90,7 @@
             <div class="col-lg-6">
               <div class="form-group">
                 {{!-- <label for="state">State</label> --}}
-                <input type="text" name="state" class="form-control" id="state" placeholder="State"required>
+                <input type="text" name="state" class="form-control" id="state" placeholder="State" required>
               </div>
             </div>
           </div>

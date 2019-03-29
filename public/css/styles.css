@@ -29,6 +29,7 @@ body {
 
 #cta {
   margin: 8rem auto 2rem 10rem;
+  color: white;
 }
 
 h1 {
@@ -83,23 +84,32 @@ input {
   font-weight: 200;
 }
 
+#contributors,
 #copyright {
+  color: white;
   opacity: .5;
 }
 
 /* SIGNIN */
 #logInView {
   margin: 8rem auto 2rem 10rem;
+  color: white;
 }
 
 /* RESET */
 #resetPassView {
   margin: 8rem auto 2rem 10rem;
+  color: white;
 }
 
 .form-text {
   margin: .5rem auto 0 0.8rem;
   color: white !important;
+}
+
+#reset {
+  border-radius: 25px;
+  width: 100%;
 }
 
 /* SIGNUP */
