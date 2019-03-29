@@ -43,7 +43,7 @@ module.exports = function(app) {
   app.get("/api/comments", function(req, res) {
     db.Comment.findAll({
       where: { active: true },
-      order: [["votes", "DESC"]]
+      order: [["id", "DESC"]]
     }).then(function(allComments) {
       res.json(allComments);
     });
@@ -56,7 +56,7 @@ module.exports = function(app) {
         active: true
       },
       include: [db.User],
-      order: [["votes", "DESC"]]
+      order: [["id", "DESC"]]
     }).then(function(commentsPerPost) {
       res.json(commentsPerPost);
     });

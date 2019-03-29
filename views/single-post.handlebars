@@ -121,7 +121,7 @@
         margin: 2rem 0 2rem 2rem;
     }
 
-    #post_Author {
+    #post_Author, #post_UpdatedAt {
         font-size: .85rem;
         text-align: right;
         margin-right: 1rem;
@@ -182,7 +182,7 @@
     <div class="container">
         <div class="row" id="singlePost">
             <div class="col-lg-10">
-                <h2 id="post_Title">Title</h2>
+                <h2 id="post_Title"></h2>
             </div>
             <div class="col-lg-2">
                 <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
@@ -193,41 +193,45 @@
         <hr class="separator-lg">
         <div class="row">
             <div class="col-lg-6">
-                <h4><span class="badge badge-secondary" id="post_Category">Category</span></h4>
+                <h4><span class="badge badge-secondary" id="post_Category"></span></h4>
             </div>
-            <div class="col-lg-6">
-                <p id="post_Author">Username | <em>03/26/2019 12:08:46am</em></p>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3">
+                <p id="post_Author"></p>
+                <p id = "post_UpdatedAt"></p>
             </div>
+        </div>
+
+        <div class="row">
+                        <div class="col-lg-12">
+                        <h5 id="post_Body"></h5>
+                        </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 id="post_Body">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's standard.</h5>
+                        <h5 id="post_Body"></h5>
+                    </div>
+                        <hr>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form class="clearfix mt-4 mb-4" id="commentForm" action="/api/comments" method="POST">
+                                <div class="form-group comment">
+                                    <label for="comment-body" id="black"></label>
+                                    <textarea class="form-control" name="comment-body" id="comment-body"
+                                        aria-describedby="post-body"
+                                        placeholder="Write your comment here"></textarea>
+                                </div>
+                                <button id="submitComment" class="btn btn-info">Submit</button>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <h5 id="post_Body">
-                                    COMMENT - Lorem Ipsum is simply dummy text of the printing and typesetting.
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                </h5>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form class="clearfix mt-4 mb-4" id="commentForm" action="/api/comments" method="POST">
-                                    <div class="form-group comment">
-                                        <label for="comment-body" id="black"></label>
-                                        <textarea class="form-control" name="comment-body" id="comment-body"
-                                            aria-describedby="post-body"
-                                            placeholder="Write your comment here"></textarea>
-                                    </div>
-                                    <button id="submitComment" class="btn btn-info">Submit</button>
-                                </form>
+                            <div class="col-lg-12 mt-2">
+                                <div id="commentContainer"></div>
                             </div>
                         </div>
                     </div>
