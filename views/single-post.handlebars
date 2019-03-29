@@ -1,7 +1,7 @@
 <style>
     * {
         font-family: 'Nunito', sans-serif;
-        color: #333 !important;
+        /*color: #333 !important;*/
         box-sizing: border-box;
         line-height: 1.2;
     }
@@ -9,12 +9,10 @@
     body {
         margin: 0;
         padding: 0;
-        /* background: linear-gradient(to bottom, rgb(220, 220, 220),  rgb(220, 220, 220), rgb(112, 103, 182, 1)); */
     }
 
+    /* NAV */
     .navbar {
-        /* position: fixed;
-    top: 0; */
         background: linear-gradient(to right, rgb(0, 40, 162), rgb(155, 64, 224)) !important;
         padding: 0;
         width: 100%;
@@ -22,7 +20,7 @@
     }
 
     #navLogo {
-        margin: 2rem auto 0 6rem;
+        margin: 2rem auto 2rem 6rem;
         color: white;
     }
 
@@ -42,98 +40,110 @@
         background-repeat: no-repeat;
     }
 
+    /* ELEMENTS*/
     h1 {
-        color: white;
-        font-size: 3rem;
-        font-weight: 700;
+        margin: 0;
     }
 
-    h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
+    a {
+        color: white !important;
     }
 
-    h3 {
-        color: #333;
-        font-weight: 700;
-        margin: 1rem auto 0 2rem;
-    }
-
-    h4 {
-        color: white;
-    }
-
-    p,
-    em,
-    h5,
-    h6 {
-        color: #333;
-    }
-
-    h4:hover {
+    a:hover {
         color: #E2B3FA !important;
     }
 
     /* CONTENT */
-    #post,
-    #singlePost {
-        margin: 6rem auto 0;
+    .card {
+        margin-top: 6rem;
+        border: none;
+        box-shadow: 0px 0px 20px rgb(169, 169, 169);
     }
 
-    .dash-tab {
-        margin: 0 0 .5rem 1rem;
+    .card-header {
+        margin: 0;
+        padding: 0;
+        background: rgb(237, 237, 237);
+    }
+
+    #post_Category {
+        border-radius: 25px;
+        padding: .5rem;
+        margin: .5rem auto .5rem 2rem;
+    }
+
+    .separator-lg {
+        margin: 0 auto 0 auto;
+        border: .5px solid #888;
+        width: 95%;
+    }
+
+
+    #post_Title {
+        color: #333;
+        margin: 1.5rem auto 0 2rem;
+    }
+
+    .fa-user-circle {
+        padding-top: 0.8rem;
+    }
+
+    #user {
+        padding-top: 0.8rem;
+    }
+
+    .card-body {
+        padding: 0 1rem;
+    }
+
+    #post_Body {
+        margin: 1rem 0 1rem 2rem;
+    }
+
+    #reply-div {
+        background: rgb(238, 239, 255);
+    }
+
+    #reply {
+        color: #888;
+        margin: 2.2rem auto 0 4rem;
+        float: left;
     }
 
     #submitComment {
         border-radius: 35px;
-        margin: 0 auto 0 auto;
+        margin: 2rem 3rem 0 auto;
+        padding: 0.4rem 1.4rem;
+        background: #9A6ECF !important;
         border: none;
         color: white;
         text-align: center;
     }
 
-    #user-icon {
-        text-align: center;
+    #comment-title {
+        color: #888;
+        margin: 1rem auto 0 2rem;
+        float: left;
     }
 
-    .card {
-        /* opacity: 0.7; */
-        box-shadow: 0px 1px 30px #999;
+    #commentContainer {
+        margin: 2rem 0 1rem 4rem;
     }
 
-    .card-body {
-        padding: .375rem;
-        margin: 0 3rem;
+    .fa-quote-left {
+        opacity: .1;
     }
 
-    hr {
-        margin: 0 auto;
+    .fa-quote-right {
+        opacity: .1;
+        float: right;
+        margin: 1rem 4rem 1rem auto;
     }
 
-    .separator-lg {
-        border: 1px solid #555;
-        color: black;
-        margin-bottom: 1rem;
-
-    }
-
-    #post_Body {
-        margin: 2rem 0 2rem 2rem;
-    }
-
-    #post_Author, #post_UpdatedAt {
-        font-size: .85rem;
-        text-align: right;
-        margin-right: 1rem;
-    }
-
-    #post_Category {
-        border-radius: 25px;
-        margin-left: 1rem;
-    }
-
-    .comment {
-        margin: 1rem;
+    .separator-md {
+        margin: 0 auto 1rem auto;
+        border: .5px solid #888;
+        width: 90%;
     }
 </style>
 
@@ -180,62 +190,68 @@
 
     <!-- SINGLE POST -->
     <div class="container">
-        <div class="row" id="singlePost">
-            <div class="col-lg-10">
-                <h2 id="post_Title"></h2>
-            </div>
-            <div class="col-lg-2">
-                <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
-                <h3>Avatar</h3>
-                <!-- </canvas> -->
-            </div>
-        </div>
-        <hr class="separator-lg">
-        <div class="row">
-            <div class="col-lg-6">
-                <h4><span class="badge badge-secondary" id="post_Category"></span></h4>
-            </div>
-            <div class="col-lg-3"></div>
-            <div class="col-lg-3">
-                <p id="post_Author"></p>
-                <p id = "post_UpdatedAt"></p>
-            </div>
-        </div>
-
-        <div class="row">
-                        <div class="col-lg-12">
-                        <h5 id="post_Body"></h5>
-                        </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 id="post_Body"></h5>
-                    </div>
-                        <hr>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form class="clearfix mt-4 mb-4" id="commentForm" action="/api/comments" method="POST">
-                                <div class="form-group comment">
-                                    <label for="comment-body" id="black"></label>
-                                    <textarea class="form-control" name="comment-body" id="comment-body"
-                                        aria-describedby="post-body"
-                                        placeholder="Write your comment here"></textarea>
-                                </div>
-                                <button id="submitComment" class="btn btn-info">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-12 mt-2">
-                                <div id="commentContainer"></div>
-                            </div>
-                        </div>
+        {{!-- card containing all the POST data --}}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="badge badge-secondary" id="post_Category"></span>
                     </div>
                 </div>
+                <hr class="separator-lg">
+                <div class="row" id="singlePost">
+                    <div class="col-lg-9">
+                        <h3 id="post_Title"></h3>
+                    </div>
+                    <div class="col-lg-1">
+                        <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
+                        <h1><i class="fas fa-user-circle"></i></h1>
+                        <!-- </canvas> -->
+                    </div>
+                    <div class="col-lg-2" id="user">
+                        <h5 id="post_Author"></h5>
+                        <p id="post_UpdatedAt"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 id="post_Body">Body</h5>
+                    </div>
+                </div>
+                <div class="row" id="reply-div">
+                    <div class="col-lg-2">
+                        <h4 id="reply">Reply</h4>
+                        {{!-- <i class="fas fa-reply"></i> --}}
+                    </div>
+                    <div class="col-lg-8">
+                        <form class="clearfix mt-0 mb-0" id="commentForm" action="/api/comments" method="POST">
+                            <div class="form-group comment">
+                                <label for="comment-body" id="black"></label>
+                                <textarea class="form-control" name="comment-body" id="comment-body"
+                                    aria-describedby="post-body" placeholder="Write your comment here"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-2">
+                        <button id="submitComment" class="btn btn-info float-right">Submit</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 id="comment-title">Comments</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="commentContainer">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+                <hr class="separator-md">
             </div>
         </div>
     </div>

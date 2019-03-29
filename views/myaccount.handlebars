@@ -1,3 +1,112 @@
+<style>
+    * {
+        font-family: 'Nunito', sans-serif;
+        /*color: #333 !important;*/
+        box-sizing: border-box;
+        line-height: 1.2;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* NAV */
+    .navbar {
+        background: linear-gradient(to right, rgb(0, 40, 162), rgb(155, 64, 224)) !important;
+        padding: 0;
+        width: 100%;
+        opacity: .7;
+    }
+
+    #navLogo {
+        margin: 2rem auto 2rem 6rem;
+        color: white;
+    }
+
+    .navbar-nav {
+        margin: 2rem 5rem 0 auto;
+    }
+
+    .nav-item {
+        margin-right: 1rem;
+    }
+
+    .img-responsive {
+        background-image: url("../images/portal-bg-01.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* ELEMENTS*/
+    h1 {
+        margin: 0;
+    }
+
+    a {
+        color: white !important;
+    }
+
+    a:hover {
+        color: #E2B3FA !important;
+    }
+
+    /* CONTENT */
+
+    #posts-section {
+        margin: 4rem auto 0 auto;
+    }
+
+    #account-header {
+        margin: 0 auto 0 3rem;
+        font-size: 2.4rem;
+        font-weight: 600;
+    }
+
+    .separator-lg {
+        margin: .5rem auto 4rem auto;
+        border: 1px solid #888;
+        width: 95%;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0px 0px 20px rgb(169, 169, 169);
+    }
+
+    .card-header {
+        margin: 0;
+        padding: 0;
+        background: rgb(237, 237, 237);
+    }
+
+    #school {
+        padding: .5rem;
+        margin: .5rem auto .5rem 2rem;
+    }
+
+    .separator-md {
+        margin: 0 auto 0 auto;
+        border: .5px solid #888;
+    }
+
+    #username {
+        color: #333;
+        margin: 1.5rem auto 0 2rem;
+    }
+
+    .fa-user-circle {
+        padding-top: 0.8rem;
+    }
+
+    #github {
+        margin: 1rem 2rem;
+        text-align: right;
+    }
+</style>
+
 <body class="img-responsive">
     <!-- Navbar -->
     <!-- Fixed navbar -->
@@ -39,16 +148,42 @@
         </nav>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
+    <div class="row">
+        <div class="col-lg-10" id="posts-section">
+            <h2 id="account-header">My Account</h2>
+            <hr class="separator-lg">
+        </div>
+    </div>
 
+    <!-- SINGLE POST -->
+    <div class="container">
+        {{!-- card containing all the POST data --}}
+        <div class="card">
+            <div class="card-header">
+                <div class="row" id="singlePost">
+                    <div class="col-lg-11">
+                        <h3 id="username">John Doe</h3>
+                    </div>
+                    <div class="col-lg-1">
+                        <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
+                        <h1><i class="fas fa-user-circle"></i></h1>
+                        <!-- </canvas> -->
+                    </div>
+                </div>
+                <hr class="separator-md">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h5 id="school">School</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <h5 id="github"><em>Github Link</em></h5>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Custom Script -->
-    <script src="js/postandcomments.js" type="text/javascript"></script>
+    <script src="js/myaccount.js" type="text/javascript"></script>
+
 </body>
