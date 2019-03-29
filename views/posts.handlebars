@@ -167,22 +167,22 @@
             <div class="collapse navbar-collapse" id="logout">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/myaccount">
                             <h4>My Account</h4>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/posts">
                             <h4>Posts</h4>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/network">
                             <h4>Network</h4>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/logout">
                             <h4>Logout</h4>
                         </a>
                     </li>
@@ -192,7 +192,7 @@
     </div>
     <div class="row">
         <div class="col-lg-2" id="btn-div">
-            <button class="btn btn-lg btn-dark" id="newPostBtn">Create New Post</button>
+            <button onclick="window.location.href='/createpost'" type="submit" class="btn btn-lg btn-dark" id="newPostBtn">Create New Post</button>
         </div>
     </div>
 

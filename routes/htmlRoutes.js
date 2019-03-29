@@ -15,7 +15,7 @@ module.exports = function(app) {
     res.render("single-post", { postID: req.params.id });
   });
 
-  // "/updateprofile" - Page with form to update existing profile
+  // "/myaccount" - Page with form to update existing profile
   // "/network" - Load table of user profiles
   // "/posts" - Load main page with a table of posts
   // "/createpost" - Page with form to create new post
