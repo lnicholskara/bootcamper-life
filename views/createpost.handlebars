@@ -194,13 +194,13 @@
             <div class="form-group">
               {{!-- <label for="title"></label> --}}
               <input type="text" name="title" id="post-title" class="form-control" aria-describedby="post-title"
-                placeholder="Title">
+                placeholder="Title" required>
             </div>
             <div class="form-group">
               {{!-- <label for="category"></label> --}}
               {{!-- <input type="text" name="category" id="post-category" class="form-control"
                 aria-describedby="post-category" placeholder="Category"> --}}
-              <select class="custom-select" name="category" id="post-category" class="form-control">
+              <select class="custom-select" name="category" id="post-category" class="form-control" required>
                 <option selected value="">-- Choose A Category --</option>
                 <option value="Client-Side">Client-Side</option>
                 <option value="Server-Side">Server-Side</option>
@@ -212,7 +212,7 @@
             <div class="form-group">
               {{!-- <label for="body"></label> --}}
               <textarea class="form-control" name="body" id="post-body" aria-describedby="post-body"
-                placeholder="Write your post here"></textarea>
+                placeholder="Write your post here" required></textarea>
             </div>
             <button id="submit" class="btn btn-dark">Submit</button>
           </form>
