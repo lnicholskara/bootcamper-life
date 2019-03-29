@@ -60,15 +60,23 @@
     }
 
     #posts-header {
-        margin: 0 auto 0 3rem;
         font-size: 2.4rem;
         font-weight: 600;
+    }
+
+    #newPostBtn {
+        margin-top: 4rem;
+        margin-left: 4rem;
+        border-radius: 35px;
+        background: #9A6ECF !important;
+        border: none;
+        color: white;
+        text-align: center;
     }
 
     .separator-lg {
         margin: .5rem auto 4rem auto;
         border: 1px solid #888;
-        width: 95%;
     }
 
     .card {
@@ -156,16 +164,19 @@
         </nav>
     </div>
 
-    <div class="row">
-        <div class="col-lg-10" id="posts-section">
-            <h2 id="posts-header">Posts</h2>
-            <hr class="separator-lg">
-        </div>
-    </div>
-
-
     <!-- SINGLE POST -->
     <div class="container">
+        {{!-- Header and Create New Post button --}}
+        <div class="row">
+            <div class="col-lg-9" id="posts-section">
+                <h2 id="posts-header">Posts</h2>
+            </div>
+            <div class="col-lg-3" id="btn-div">
+                <button onclick="window.location.href='/createpost'" type="submit" class="btn btn-lg btn-dark"
+                    id="newPostBtn">Create New Post</button>
+            </div>
+        </div>
+        <hr class="separator-lg">
         {{!-- card containing all the POST data --}}
         <div class="card">
             <div class="card-header">
