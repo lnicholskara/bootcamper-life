@@ -24,6 +24,10 @@ module.exports = function(app, passport) {
   );
 
   app.get("/posts", isLoggedIn, authController.posts);
+  app.get("/createpost", isLoggedIn, authController.createpost);
+  app.get("/single-post", isLoggedIn, authController.singlepost);
+  app.get("/myaccount", isLoggedIn, authController.myaccount);
+  app.get("/network", isLoggedIn, authController.network);
   app.get("/logout", authController.logout);
 
   function isLoggedIn(req, res, next) {
