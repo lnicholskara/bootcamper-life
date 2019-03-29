@@ -1,7 +1,7 @@
 <style>
     * {
         font-family: 'Nunito', sans-serif;
-        color: #333;
+        /*color: #333 !important;*/
         box-sizing: border-box;
         line-height: 1.2;
     }
@@ -9,12 +9,10 @@
     body {
         margin: 0;
         padding: 0;
-        /* background: linear-gradient(to bottom, rgb(220, 220, 220),  rgb(220, 220, 220), rgb(112, 103, 182, 1)); */
     }
 
+    /* NAV */
     .navbar {
-        /* position: fixed;
-    top: 0; */
         background: linear-gradient(to right, rgb(0, 40, 162), rgb(155, 64, 224)) !important;
         padding: 0;
         width: 100%;
@@ -22,7 +20,7 @@
     }
 
     #navLogo {
-        margin: 2rem auto 0 6rem;
+        margin: 2rem auto 2rem 6rem;
         color: white;
     }
 
@@ -42,110 +40,77 @@
         background-repeat: no-repeat;
     }
 
+    /* ELEMENTS*/
     h1 {
-        color: white;
-        font-size: 3rem;
-        font-weight: 700;
+        margin: 0;
     }
 
-    h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
+    a {
+        color: white !important;
     }
 
-    h3 {
-        color: #333;
-        font-weight: 700;
-        margin: 1rem auto 0 2rem;
-    }
-
-    h4 {
-        color: white;
-    }
-
-    p,
-    em,
-    h5,
-    h6 {
-        color: #333;
-    }
-
-    h4:hover {
+    a:hover {
         color: #E2B3FA !important;
     }
 
     /* CONTENT */
-    #post,
-    #singlePost {
-        margin: 6rem auto 0;
+
+    #posts-section {
+        margin: 4rem auto 0 auto;
     }
 
-    .dash-tab {
-        margin: 0 0 .5rem 1rem;
-    }
-
-    #btn-div {
-        position: fixed;
-        right: -40px;
-        padding: 0;
-        margin: 6rem 0 0 1rem;
-        z-index: 1000;
-        overflow: hidden;
-
-    }
-
-    #newPostBtn {
-        border-radius: 35px;
-        background: #9A6ECF !important;
-        border: none;
-        color: white;
-        text-align: center;
-    }
-
-    #newPostBtn:hover {
-        background: #4966B4 !important;
-    }
-
-    #user-icon {
-        text-align: center;
-    }
-
-    .card {
-        /* opacity: 0.7; */
-        box-shadow: 0px 1px 30px #999;
-    }
-
-    .card-body {
-        padding: .375rem;
-        margin: 0 3rem;
-    }
-
-    hr {
-        margin: 0 auto;
+    #posts-header {
+        margin: 0 auto 0 3rem;
+        font-size: 2.4rem;
+        font-weight: 600;
     }
 
     .separator-lg {
-        border: 1px solid #555;
-        color: black;
-        margin-bottom: 3rem;
-
+        margin: .5rem auto 4rem auto;
+        border: 1px solid #888;
+        width: 95%;
     }
 
-    #post_Body {
-        margin: 2rem 0 2rem 2rem;
+    .card {
+        border: none;
+        box-shadow: 0px 0px 20px rgb(169, 169, 169);
     }
 
-    #post_Author {
-        font-size: .85rem;
-        text-align: right;
-        margin-right: 0;
+    .card-header {
+        margin: 0;
+        padding: 0;
+        background: rgb(237, 237, 237);
     }
 
     #post_Category {
         border-radius: 25px;
+        padding: .5rem;
+        margin: .5rem auto .5rem 2rem;
     }
 
-    .comment {
+    .separator-md {
+        margin: 0 auto 0 auto;
+        border: .5px solid #888;
+    }
+
+    #post_Title {
+        color: #333;
+        margin: 1.5rem auto 0 2rem;
+    }
+
+    .fa-user-circle {
+        padding-top: 0.8rem;
+    }
+
+    #user {
+        padding-top: 0.8rem;
+    }
+
+    .card-body {
+        padding: 0 1rem;
+    }
+
+    #post_Body {
         margin: 1rem 0 1rem 2rem;
     }
 </style>
@@ -167,22 +132,22 @@
             <div class="collapse navbar-collapse" id="logout">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/myaccount">
+                        <a class="nav-link" href="#">
                             <h4>My Account</h4>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/posts">
+                        <a class="nav-link" href="#">
                             <h4>Posts</h4>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/network">
+                        <a class="nav-link" href="#">
                             <h4>Network</h4>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">
+                        <a class="nav-link" href="#">
                             <h4>Logout</h4>
                         </a>
                     </li>
@@ -190,75 +155,51 @@
             </div>
         </nav>
     </div>
+
     <div class="row">
-        <div class="col-lg-2" id="btn-div">
-            <button onclick="window.location.href='/createpost'" type="submit" class="btn btn-lg btn-dark" id="newPostBtn">Create New Post</button>
+        <div class="col-lg-10" id="posts-section">
+            <h2 id="posts-header">Posts</h2>
+            <hr class="separator-lg">
         </div>
     </div>
 
-    <!-- POSTS -->
+
+    <!-- SINGLE POST -->
     <div class="container">
-        <div class="row" id="post">
-            <div class="col-lg-9">
-                <h2>Posts</h2>
-            </div>
-
-        </div>
-        <hr class="separator-lg">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <h3>
-                                    {{this.title}}
-                                    Title</h3>
-                            </div>
-                            <div class="col-lg-2">
-                                <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
-                                <h3>Avatar</h3>
-                                <!-- </canvas> -->
-                            </div>
-                        </div>
+        {{!-- card containing all the POST data --}}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="badge badge-secondary" id="post_Category">Category</span>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <h6>
-                                    Category:
-                                    <span class="badge badge-secondary" id="post_Category">
-                                        {{this.category}}
-                                        Category
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="col-lg-8">
-                                <a href="">
-                                    <p id="post_Author">
-                                        {{this.email}}
-                                        Username |
-                                        <em>
-                                            {{this.createdat}}
-                                            03/26/2019 12:08:46am
-                                        </em>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h5 id="post_Body">
-                                    {{this.body}}
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry. Lorem Ipsum has been the industry's standard.</h5>
-                            </div>
-                        </div>
+                </div>
+                <hr class="separator-md">
+                <div class="row" id="singlePost">
+                    <div class="col-lg-9">
+                        <h3 id="post_Title">Title</h3>
+                    </div>
+                    <div class="col-lg-1">
+                        <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
+                        <h1><i class="fas fa-user-circle"></i></h1>
+                        <!-- </canvas> -->
+                    </div>
+                    <div class="col-lg-2" id="user">
+                        <h5 id="post_Author">Author</h5>
+                        <p id="post_UpdatedAt">Date & time</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 id="post_Body">Body</h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Custom Script -->
+    <script src="js/post.js" type="text/javascript"></script>
 </body>
