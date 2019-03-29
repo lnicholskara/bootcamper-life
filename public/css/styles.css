@@ -1,7 +1,7 @@
 /* GENERAL STYLING */
 * {
   font-family: 'Nunito', sans-serif;
-  color: white;
+  /* color: white; */
   box-sizing: border-box;
   line-height: 1.2;
 }
@@ -35,6 +35,7 @@ h1 {
   font-size: 3rem;
   font-weight: 700;
 }
+
 
 hr {
   border: .0375rem solid white;
