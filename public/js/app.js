@@ -8,7 +8,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   // array with texts to type in typewriter
   var dataText = [
-
     "Together we build better",
     "Together we build faster",
     "Together we make dreams come true"
