@@ -35,17 +35,33 @@ $(document).ready(function() {
       // newRow.append(oneProfile);
       // $("tbody").append(newRow);
 
-      var profileRow = $("#all-profiles");
-      var singleProfile = $("<tr>").append(
-        $("<td>").text(profileInfo.firstName),
-        $("<td>").text(profileInfo.lastName),
-        $("<td>").text(profileInfo.school),
-        $("<td>").text(profileInfo.city),
-        $("<td>").text(profileInfo.state),
-        $("<td>").text(profileInfo.graduated),
-        $("<td>").text(profileInfo.github)
-      );
-      $(profileRow).append(singleProfile);
+      // var profileRow = $("#all-profiles");
+      var colFirstName = $("<td>");
+      var colLastName = $("<td>");
+      var colSchool = $("<td>");
+      var colCity = $("<td>");
+      var colState = $("<td>");
+      var colGraduated = $("<td>");
+      var colGithub = $("<td>");
+
+      var singleProfile = $("<tr>");
+
+      colFirstName.text(profileInfo.firstName);
+      singleProfile.append(colFirstName);
+      colLastName.text(profileInfo.lastName);
+      singleProfile.append(colLastName);
+      colSchool.text(profileInfo.school);
+      singleProfile.append(colSchool);
+      colCity.text(profileInfo.city);
+      singleProfile.append(colCity);
+      colState.text(profileInfo.state);
+      singleProfile.append(colState);
+      colGraduated.text(profileInfo.graduated);
+      singleProfile.append(colGraduated);
+      colGithub.text(profileInfo.github);
+      singleProfile.append(colGithub);
+
+      $("tbody").append(singleProfile);
     }
   });
 
