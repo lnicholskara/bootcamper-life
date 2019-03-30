@@ -24,7 +24,7 @@ module.exports = function(app) {
       order: [["id", "DESC"]],
       include: [db.Post]
     }).then(function(allProfiles) {
-      res.json(allProfiles);
+      res.render(allProfiles);
     });
   });
   //Get or Read One User's Information
