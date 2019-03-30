@@ -168,49 +168,52 @@
     <div class="container">
         {{!-- Header and Create New Post button --}}
         <div class="row">
-            <div class="col-lg-9" id="posts-section">
+            <div class="col-lg-9 col-md-6" id="posts-section">
                 <h2 id="posts-header">Posts</h2>
             </div>
-            <div class="col-lg-3" id="btn-div">
+            <div class="col-lg-3 col-md-6" id="btn-div">
                 <button onclick="window.location.href='/createpost'" type="submit" class="btn btn-lg btn-dark"
                     id="newPostBtn">Create New Post</button>
             </div>
         </div>
         <hr class="separator-lg">
-        {{!-- card containing all the POST data --}}
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <span class="badge badge-secondary" id="post_Category">Category</span>
+        <div id="postsContainer">
+            {{!-- card containing all the POST data 
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <span class="badge badge-secondary" id="post_Category"></span>
+                        </div>
+                    </div>
+                    <hr class="separator-md">
+                    <div class="row" id="singlePost">
+                        <div class="col-lg-9">
+                            <h3 id="post_Title"></h3>
+                        </div>
+                        <div class="col-lg-1">
+                            <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
+                            <h1><i class="fas fa-user-circle"></i></h1>
+                            <!-- </canvas> -->
+                        </div>
+                        <div class="col-lg-2" id="user">
+                            <h5 id="post_Author"></h5>
+                            <p id="post_UpdatedAt"></p>
+                        </div>
                     </div>
                 </div>
-                <hr class="separator-md">
-                <div class="row" id="singlePost">
-                    <div class="col-lg-9">
-                        <h3 id="post_Title">Title</h3>
-                    </div>
-                    <div class="col-lg-1">
-                        <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
-                        <h1><i class="fas fa-user-circle"></i></h1>
-                        <!-- </canvas> -->
-                    </div>
-                    <div class="col-lg-2" id="user">
-                        <h5 id="post_Author">Author</h5>
-                        <p id="post_UpdatedAt">Date & time</p>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 id="post_Body"></h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h5 id="post_Body">Body</h5>
-                    </div>
-                </div>
-            </div>
+            </div>--}}
         </div>
     </div>
 
     <!-- Custom Script -->
-    <script src="js/post.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/allposts.js" type="text/javascript"></script>
 </body>
