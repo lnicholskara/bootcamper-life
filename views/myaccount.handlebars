@@ -148,15 +148,18 @@
         </nav>
     </div>
 
-    <div class="row">
-        <div class="col-lg-10" id="posts-section">
-            <h2 id="account-header">My Account</h2>
-            <hr class="separator-lg">
-        </div>
-    </div>
-
     <!-- SINGLE POST -->
     <div class="container">
+        <div class="row">
+            <div class="col-lg-9" id="posts-section">
+                <h2 id="account-header">My Account</h2>
+            </div>
+            <div class="col-lg-3" id="btn-div">
+                <button onclick="window.location.href='/createpost'" type="submit" class="btn btn-lg btn-dark"
+                    id="newPostBtn">My Post</button>
+            </div>
+        </div>
+        <hr class="separator-lg">
         {{!-- card containing all the POST data --}}
         <div class="card">
             <div class="card-header">
@@ -175,32 +178,28 @@
                     <div class="col-lg-6">
                         <h5 id="school">First Name</h5>
                     </div>
-                    <div class="col-lg-6">
-                        <h5 id="github"><em>first name goes here</em></h5>
+                    <div class="col-lg-6" style="text-align: right">
+                        <input type="text" name="first_name" class="form-control" id="firstname"
+                            placeholder="First Name" required>
                     </div>
                     <div class="col-lg-6">
                         <h5 id="school">Last Name</h5>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="github"><em>last name goes here</em></h5>
+                        <input type="text" name="last_name" class="form-control" id="lastname" placeholder="Last Name" required>
                     </div>
                     <div class="col-lg-6">
                         <h5 id="school">Your Email</h5>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="github"><em>email goes here</em></h5>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+              placeholder="Email" required>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="school">Password</h5>
+                        <h5 id="school">Campus</h5>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="github"><em>Click to reset your password</em></h5>
-                    </div>
-                    <div class="col-lg-6">
-                        <h5 id="school">School</h5>
-                    </div>
-                    <div class="col-lg-6">
-                        <h5 id="github"><em>school name goes here</em></h5>
+                        <input type="text" name="school" class="form-control" id="userSchool" placeholder="Enter Bootcamp" required>
                     </div>
                     <div class="col-lg-6">
                         <h5 id="school">Graduated</h5>
@@ -212,19 +211,20 @@
                         <h5 id="school">City</h5>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="github"><em>city goes here</em></h5>
+                        <input type="text" name="city" class="form-control" id="city" placeholder="City" required>
                     </div>
                     <div class="col-lg-6">
                         <h5 id="school">State</h5>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="github"><em>state goes here</em></h5>
+                        <input type="text" name="state" class="form-control" id="state" placeholder="State" required>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="school">Github</h5>
+                        <h5 id="school">Github Account</h5>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="github"><em>github_link goes here</em></h5>
+                        <input type="text" name="github_link" class="form-control" id="github_link"
+                  placeholder="Link to your Github" required>
                     </div>
                 </div>
             </div>
