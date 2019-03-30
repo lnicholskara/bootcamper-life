@@ -29,8 +29,6 @@ $(document).ready(function() {
       var colCity = $("<td>");
       var colState = $("<td>");
       var colGraduated = $("<td>");
-      var colGithub = $("<td>");
-      var colEmail = $("<td>");
       var githubLink = $("<a target='_blank'>");
       var emailLink = $("<a target='_blank'>");
       var singleProfile = $("<tr>");
