@@ -67,7 +67,6 @@
     }
 
     #post_Category {
-        border-radius: 25px;
         padding: .5rem;
         margin: .5rem auto .5rem 2rem;
     }
@@ -228,17 +227,17 @@
                     <div class="clearfix mt-0 mb-0">
                         <form id="commentForm" action="/api/comments" method="POST">
                     </div>
-                            <div class="col-lg-8 col-md-12">
-                                <div class="form-group comment">
-                                    <label for="comment-body" id="black"></label>
-                                    <textarea class="form-control" name="comment-body" id="comment-body"
-                                        aria-describedby="post-body" placeholder="Write your comment here"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-12">
-                                <button id="submitComment" class="btn btn-info float-right">Submit</button>
-                            </div>
-                        </form>       
+                    <div class="col-lg-8 col-md-12">
+                        <div class="form-group comment">
+                            <label for="comment-body" id="black"></label>
+                            <textarea class="form-control" name="comment-body" id="comment-body"
+                                aria-describedby="post-body" placeholder="Write your comment here"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-12">
+                        <button id="submitComment" class="btn btn-info float-right">Submit</button>
+                    </div>
+                    </form>
                 </div>
                 {{!-- <div class="row">
                     <div class="col-lg-12">
@@ -247,10 +246,9 @@
                 </div> --}}
                 <div class="row">
                     <div class="col-lg-12">
-                        <div id="commentContainer">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <i class="fas fa-quote-right"></i>
+                        {{!-- <i class="fas fa-quote-left"></i> --}}
+                        <div id="commentContainer"></div>
+                        {{!-- <i class="fas fa-quote-right"></i> --}}
                     </div>
                 </div>
                 <hr class="separator-md">
