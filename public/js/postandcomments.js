@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function populatePostInfo(post) {
     var formattedDate = new Date(post.updatedAt);
-    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm a");
 
     $("#post_Title").text(post.title);
     $("#post_Category").text(post.category);
@@ -59,13 +59,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function createNewRow(comment, author) {
     console.log(comment);
     var formattedDate = new Date(comment.createdAt);
-    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm a");
     var newPostCard = $("<div>");
     var newPostAuthor = $("<small>");
     var newPostDate = $("<small>");
     var newPostBody = $("<p>");
     newPostAuthor.attr("id", "black-author");
     newPostAuthor.addClass("float-right");
+    newPostCard.addClass("mr-2");
     newPostDate.attr("id", "grey-date");
     newPostBody.attr("id", "black-comment");
     newPostDate.text(formattedDate);
