@@ -14,6 +14,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/myposts", function(req, res) {
+    db.Post.findAll({
+      where: { active: true, UserId: req.user.id },
+      order: [["id", "DESC"]],
+      include: [db.User]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
   app.get("/api/posts/:id", function(req, res) {
     db.Post.findOne({
       where: { id: req.params.id, active: true },
