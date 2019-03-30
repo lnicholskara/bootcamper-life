@@ -25,6 +25,10 @@ module.exports = function(app) {
     res.render("posts", {});
   });
 
+  app.get("/myposts", function(req, res) {
+    res.render("myposts", {});
+  });
+
   //************************************************/
   // Render 404 page for any unmatched routes
 

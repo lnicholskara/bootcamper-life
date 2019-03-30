@@ -37,7 +37,6 @@ h1 {
   font-weight: 700;
 }
 
-
 hr {
   border: .0375rem solid white;
   /* width: 90%; */
@@ -47,6 +46,11 @@ hr {
 
 a:hover { 
   color: white !important; 
+}
+
+.btn:hover {
+  box-shadow: 0px 2px 6px #999;
+
 }
 
 #signUp,
@@ -136,4 +140,11 @@ input {
 
 #createAccount {
   margin: 4rem auto 2rem 10rem;
+}
+
+/* *********** PORTAL ************* */
+
+.card {
+  border: none;
+  box-shadow: 0px 1px 30px #999;
 }
