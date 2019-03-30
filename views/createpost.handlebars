@@ -1,7 +1,7 @@
 <style>
   * {
     font-family: 'Nunito', sans-serif;
-    color: #333;
+    /*color: #333 !important;*/
     box-sizing: border-box;
     line-height: 1.2;
   }
@@ -11,6 +11,7 @@
     padding: 0;
   }
 
+  /* NAV */
   .navbar {
     background: linear-gradient(to right, rgb(0, 40, 162), rgb(155, 64, 224)) !important;
     padding: 0;
@@ -19,7 +20,7 @@
   }
 
   #navLogo {
-    margin: 2rem auto 0 6rem;
+    margin: 2rem auto 2rem 6rem;
     color: white;
   }
 
@@ -39,49 +40,33 @@
     background-repeat: no-repeat;
   }
 
-  #form {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+  /* ELEMENTS*/
   h1 {
-    color: white;
-    font-size: 3rem;
-    font-weight: 700;
+    margin: 0;
   }
 
-  h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
+  a {
+    color: white !important;
   }
 
-  h3 {
-    color: #333;
-    font-weight: 700;
-  }
-
-  h4 {
-    color: white;
-  }
-
-  p,
-  em,
-  h5,
-  h6 {
-    color: #333;
-  }
-
-  h4:hover {
+  a:hover {
     color: #E2B3FA !important;
   }
 
   /* CONTENT */
-  #home {
-    margin: 6rem auto 0;
+
+  #posts-section {
+    margin: 4rem auto 0 auto;
   }
 
-  .dash-tab {
-    margin: 0 0 .5rem 1rem;
+  #posts-header {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  #form {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #submit {
@@ -93,55 +78,31 @@
     text-align: center;
   }
 
-  #submit:hover {
-    background: #4966B4 !important;
-  }
-
-
-  #post-body {
-    /*border-radius: 35px;*/
-  }
-
-  #user-icon {
-    text-align: center;
-  }
-
-  .card {
-    box-shadow: 0px 1px 30px #999;
-  }
-
   .card-body {
-    padding: .375rem;
-    margin: 0 3rem;
-  }
-
-  hr {
-    margin: 0 auto;
+    margin: 1rem;
   }
 
   .separator-lg {
-    border: 1px solid #555;
-    color: black;
-    margin-bottom: 3rem;
-
-  }
-
-  #postBody {
-    margin: 2rem 0 2rem 2rem;
-  }
-
-  #author {
-    font-size: .85rem;
-    text-align: right;
-    margin-right: 0;
+    margin: 1rem auto 4rem auto;
+    border: 1px solid #888;
   }
 
   #category {
     border-radius: 25px;
   }
 
-  .comment {
-    margin: 1rem 0 1rem 2rem;
+  #post-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  #post-body {
+    min-height: 8rem;
+  }
+
+  #post-category {
+    border-radius: 25px;
+
   }
 </style>
 
@@ -187,35 +148,47 @@
   </div>
   <div id="home">
     <div class="container">
+
       <div class="row">
-        <div class=" col-lg-6" id="form">
-          <h3>New Post</h3>
-          <form class="clearfix" id="postForm">
-            <div class="form-group">
-              {{!-- <label for="title"></label> --}}
-              <input type="text" name="title" id="post-title" class="form-control" aria-describedby="post-title"
-                placeholder="Title" required>
-            </div>
-            <div class="form-group">
-              {{!-- <label for="category"></label> --}}
-              {{!-- <input type="text" name="category" id="post-category" class="form-control"
+        <div class="col-lg-12" id="posts-section">
+          <h2 id="posts-header">New Post</h2>
+          <hr class="separator-lg">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                {{!-- ********* Changed this column size from 6 to 12**************** --}}
+                <div class=" col-lg-12" id="form">
+                  {{!-- <h3>New Post</h3> --}}
+                  <form class="clearfix" id="postForm">
+                    <div class="form-group">
+                      {{!-- <label for="title"></label> --}}
+                      <input type="text" name="title" id="post-title" class="form-control" aria-describedby="post-title"
+                        placeholder="Title" required>
+                    </div>
+                    <div class="form-group">
+                      {{!-- <label for="category"></label> --}}
+                      {{!-- <input type="text" name="category" id="post-category" class="form-control"
                 aria-describedby="post-category" placeholder="Category"> --}}
-              <select class="custom-select" name="category" id="post-category" class="form-control" required>
-                <option selected value="">-- Choose A Category --</option>
-                <option value="Client-Side">Client-Side</option>
-                <option value="Server-Side">Server-Side</option>
-                <option value="Website Management">Website Management</option>
-                <option value="Website Management">Web Developer's FAQ</option>
-                <option value="Website Management">Other</option>
-              </select>
+                      <select class="custom-select" name="category" id="post-category" class="form-control" required>
+                        <option selected value="">-- Choose A Category --</option>
+                        <option value="Client-Side">Client-Side</option>
+                        <option value="Server-Side">Server-Side</option>
+                        <option value="Website Management">Website Management</option>
+                        <option value="Website Management">Web Developer's FAQ</option>
+                        <option value="Website Management">Other</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      {{!-- <label for="body"></label> --}}
+                      <textarea class="form-control" name="body" id="post-body" aria-describedby="post-body"
+                        placeholder="Write your post here" required></textarea>
+                    </div>
+                    <button id="submit" class="btn btn-dark">Submit</button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              {{!-- <label for="body"></label> --}}
-              <textarea class="form-control" name="body" id="post-body" aria-describedby="post-body"
-                placeholder="Write your post here" required></textarea>
-            </div>
-            <button id="submit" class="btn btn-dark">Submit</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
