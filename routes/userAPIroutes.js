@@ -28,8 +28,10 @@ module.exports = function(app) {
     });
   });
   //Get or Read One User's Information
-  app.get("/api/users/:id", function(req, res) {
-    db.User.findByPk(req.params.id).then(function(oneUser) {
+  app.get("/api/myuser", function(req, res) {
+    db.User.findAll({
+      where: { id: req.user.id }
+    }).then(function(oneUser) {
       res.json(oneUser);
     });
   });
