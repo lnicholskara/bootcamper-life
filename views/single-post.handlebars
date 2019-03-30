@@ -200,15 +200,15 @@
                 </div>
                 <hr class="separator-lg">
                 <div class="row" id="singlePost">
-                    <div class="col-lg-9">
+                    <div class="col-lg-8 col-md-6 col-sm-12 mb-2">
                         <h3 id="post_Title"></h3>
                     </div>
-                    <div class="col-lg-1">
+                    <div class="col-lg-1 col-md-2 d-none d-sm-none d-md-block">
                         <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
                         <h1><i class="fas fa-user-circle"></i></h1>
                         <!-- </canvas> -->
                     </div>
-                    <div class="col-lg-2" id="user">
+                    <div class="col-lg-3 col-md-4 d-none d-sm-none d-md-block" id="user">
                         <h5 class="pr-1" id="post_Author"></h5>
                         <p class="pr-1" id="post_UpdatedAt"></p>
                     </div>
@@ -221,21 +221,21 @@
                     </div>
                 </div>
                 <div class="row" id="reply-div">
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 d-none d-sm-none d-md-none d-lg-block">
                         <h4 id="reply">Reply</h4>
                         {{!-- <i class="fas fa-reply"></i> --}}
                     </div>
                     <div class="clearfix mt-0 mb-0">
                         <form id="commentForm" action="/api/comments" method="POST">
                     </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 col-md-12">
                                 <div class="form-group comment">
                                     <label for="comment-body" id="black"></label>
                                     <textarea class="form-control" name="comment-body" id="comment-body"
                                         aria-describedby="post-body" placeholder="Write your comment here"></textarea>
                                 </div>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-2 col-md-12">
                                 <button id="submitComment" class="btn btn-info float-right">Submit</button>
                             </div>
                         </form>       
