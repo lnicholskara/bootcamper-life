@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+$(document).ready(function() {
   var url = event.path[1].location.origin;
   console.log(url);
   var postsContainer = $("#postsContainer");
@@ -44,9 +44,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var link = $("<a>");
     var postTitle = $("<h3>");
     var col1 = $("<div>");
-    var h1 = $("<h1>");
-    var i = $("<i>");
-    var deleteLink = $("<a>");
+    var editButton = $("<button>");
+    var deleteButton = $("<button>");
     var col2 = $("<div>");
     var postAuthor = $("<h5>");
     var postDate = $("<p>");
@@ -65,14 +64,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     hr.addClass("separator-md");
     row2.addClass("row");
     row2.attr("id", "singlePost");
-    col9.addClass("col-lg-8 col-md-6 col-10 mb-3");
+    col9.addClass("col-lg-7 col-md-5 col-10 mb-3");
     postTitle.attr("id", "post_Title");
-    col1.addClass("col-lg-1 col-2");
-    i.addClass("fas fa-trash mt-2");
-    col2.addClass("col-lg-3 col-md-4 d-none d-sm-none d-md-block");
+    col1.addClass("col-lg-2 col-2 col-md-3 buttons-section");
+    editButton.addClass("btn btn-default mr-1");
+    deleteButton.addClass("btn btn-default");
+    editButton.attr("id", "edit-submit");
+    deleteButton.attr("id", "edit-submit");
+    col2.addClass(
+      "col-lg-3 col-md-4 d-none d-sm-none d-md-block author-details"
+    );
     col2.attr("id", "user");
+    postAuthor.addClass("mt-3");
     postAuthor.attr("id", "post_Author");
     postDate.attr("id", "post_UpdatedAt");
+    editButton.attr("value", post.id);
     cardBody.addClass("card-body");
     row3.addClass("row");
     col12Body.addClass("col-lg-12");
@@ -85,13 +91,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     postDate.text(formattedDate);
     postBody.text(post.body);
     postTitle.attr(post.title);
+    deleteButton.text("X");
+    editButton.text("Edit");
 
     //Link title of post to unique post page
     var postLink = url + "/posts=" + post.id;
     console.log(postLink);
     $(link).attr("href", postLink);
 
-    $(deleteLink).attr("href", postLink);
+    $(editButton).attr("onclick", `location.href='/editpost=${post.id}'`);
+    $(editButton).attr("type", "submit");
 
     //Append to page
     col12.append(span);
@@ -108,8 +117,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     col2.append(postDate);
     row2.append(col2);
 
-    h1.append(i);
-    col1.append(h1);
+    col1.append(editButton);
+    col1.append(deleteButton);
     row2.append(col1);
 
     card.append(hr);

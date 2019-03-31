@@ -29,6 +29,10 @@ module.exports = function(app) {
     res.render("myposts", {});
   });
 
+  app.get("/editpost=:id", function(req, res) {
+    res.render("editpost", {});
+  });
+
   //************************************************/
   // Render 404 page for any unmatched routes
 

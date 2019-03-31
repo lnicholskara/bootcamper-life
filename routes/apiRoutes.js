@@ -80,7 +80,7 @@ module.exports = function(app) {
   app.put("/api/posts/:id", function(req, res) {
     db.Post.update(req.body, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function(updatedPost) {
       res.json(updatedPost);
@@ -91,7 +91,7 @@ module.exports = function(app) {
   app.put("/api/comments/:id", function(req, res) {
     db.Comment.update(req.body, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function(softDelComment) {
       res.json(softDelComment);
