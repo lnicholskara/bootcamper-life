@@ -35,4 +35,14 @@ module.exports = function(app) {
       res.json(oneUser);
     });
   });
+  //Update One User
+  app.put("/api/myuser", function(req, res) {
+    db.User.update(req.body, {
+      where: {
+        id: req.user.id
+      }
+    }).then(function(updatedProfile) {
+      res.json(updatedProfile);
+    });
+  });
 };
