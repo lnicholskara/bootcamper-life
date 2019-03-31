@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  
   var userProfiles;
 
   $.get("/api/users/", function(data) {
@@ -19,3 +18,7 @@ $(document).ready(function() {
         state: userProfiles[i].state,
         github: userProfiles[i].github_link
       };
+      console.log(profileInfo);
+    }
+  });
+});
