@@ -83,8 +83,23 @@ $(document).ready(function() {
     row3.addClass("row");
     col12Body.addClass("col-lg-12");
     postBody.attr("id", "post_Body");
+    deleteButton.addClass("delete");
+
+    //Create badge colors based on category
+    if ("Server-Side" === post.category) {
+      $(span).addClass("server-side");
+    } else if ("Client-Side" === post.category) {
+      $(span).addClass("client-side");
+    } else if ("Career Advice" === post.category) {
+      $(span).addClass("career-advice");
+    } else if ("Web Developer's FAQ" === post.category) {
+      $(span).addClass("faq");
+    } else {
+      $(span).addClass("website-management");
+    }
 
     //Insert info from posts
+    $(span).addClass("badge");
     span.text(post.category);
     postTitle.text(post.title);
     postAuthor.text(author);
@@ -93,15 +108,17 @@ $(document).ready(function() {
     postTitle.attr(post.title);
     deleteButton.text("X");
     editButton.text("Edit");
+    deleteButton.attr("id", post.id);
 
     //Link title of post to unique post page
     var postLink = url + "/posts=" + post.id;
     console.log(postLink);
-    $(link).attr("href", postLink);
+    $(link).attr("data-message", postLink);
 
     $(editButton).attr("onclick", `location.href='/editpost=${post.id}'`);
     $(editButton).attr("type", "submit");
-
+    $(deleteButton).attr("type", "submit");
+  
     //Append to page
     col12.append(span);
     row1.append(col12);
@@ -135,4 +152,27 @@ $(document).ready(function() {
 
     return newPostCard;
   }
+
+  $(document).on("click", ".delete", function () {
+    console.log($(this).prop("id"));
+    buttonvalue = $(this).prop("id")
+    console.log(buttonvalue)
+    var newInfo = {
+        active: false,
+        id: buttonvalue
+    };
+    console.log(newInfo);
+    updatePost(newInfo);
+  })
+
+  function updatePost(data) {
+    $.ajax({
+        method: "PUT",
+        url: "/api/posts/" + data.id,
+        data: data
+    }).then(function() {
+        window.location.reload();
+    });
+  }
+
 });

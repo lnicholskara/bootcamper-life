@@ -76,6 +76,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
     col12Body.addClass("col-lg-12");
     postBody.attr("id", "post_Body");
 
+    //Create badge colors based on category
+    if ("Server-Side" === post.category) {
+      $(span).addClass("server-side");
+    } else if ("Client-Side" === post.category) {
+      $(span).addClass("client-side");
+    } else if ("Career Advice" === post.category) {
+      $(span).addClass("career-advice");
+    } else if ("Web Developer's FAQ" === post.category) {
+      $(span).addClass("faq");
+    } else {
+      $(span).addClass("website-management");
+    }
+
     //Insert info from posts
     span.text(post.category);
     postTitle.text(post.title);

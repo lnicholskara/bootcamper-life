@@ -20,6 +20,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var formattedDate = new Date(post.updatedAt);
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm a");
 
+    if ("Server-Side" === post.category) {
+      $("#post_Category").addClass("server-side");
+    } else if ("Client-Side" === post.category) {
+      $("#post_Category").addClass("client-side");
+    } else if ("Career Advice" === post.category) {
+      $("#post_Category").addClass("career-advice");
+    } else if ("Web Developer's FAQ" === post.category) {
+      $("#post_Category").addClass("faq");
+    } else {
+      $("#post_Category").addClass("website-management");
+    }
+
     $("#post_Title").text(post.title);
     $("#post_Category").text(post.category);
     $("#post_Body").text(post.body);
