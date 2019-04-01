@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var cardHeader = $("<div>");
     var row1 = $("<div>");
     var col12 = $("<div>");
+    var colCounter = $("<div>");
+    var commentCounter = $("<h6>");
     var span = $("<span>");
     var hr = $("<hr>");
     var row2 = $("<div>");
@@ -57,7 +59,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     card.addClass("card mb-4");
     cardHeader.addClass("card-header");
     row1.addClass("row");
-    col12.addClass("col-lg-12");
+    col12.addClass("col-lg-10 col-md-9 col-8");
+    colCounter.addClass("col-lg-2 col-md-3 col-4");
+    commentCounter.addClass("pt-3 comments");
     span.addClass("badge badge-secondary");
     span.attr("id", "post_Category");
     hr.addClass("separator-md");
@@ -89,8 +93,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       $(span).addClass("website-management");
     }
 
+    console.log(post.Comments.length);
+
     //Insert info from posts
     span.text(post.category);
+    commentCounter.text("Comments: " + post.Comments.length);
     postTitle.text(post.title);
     postAuthor.text(author);
     postDate.text(formattedDate);
@@ -105,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Append to page
     col12.append(span);
     row1.append(col12);
+    colCounter.append(commentCounter);
+    row1.append(colCounter);
     cardHeader.append(row1);
     card.append(cardHeader);
     newPostCard.append(card);

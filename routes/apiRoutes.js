@@ -8,7 +8,7 @@ module.exports = function(app) {
     db.Post.findAll({
       where: { active: true },
       order: [["id", "DESC"]],
-      include: [db.User]
+      include: [db.User, db.Comment]
     }).then(function(dbPost) {
       res.json(dbPost);
     });
@@ -18,7 +18,7 @@ module.exports = function(app) {
     db.Post.findAll({
       where: { active: true, UserId: req.user.id },
       order: [["id", "DESC"]],
-      include: [db.User]
+      include: [db.User, db.Comment]
     }).then(function(dbPost) {
       res.json(dbPost);
     });

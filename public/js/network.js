@@ -45,7 +45,11 @@ $(document).ready(function() {
       singleProfile.append(colCity);
       colState.text(profileInfo.state);
       singleProfile.append(colState);
-      colGraduated.text(profileInfo.graduated);
+      if (profileInfo.graduated === true) {
+        colGraduated.text("Yes");
+      } else {
+        colGraduated.text("No");
+      }
       singleProfile.append(colGraduated);
       githubLink.html(
         "<td>" +
