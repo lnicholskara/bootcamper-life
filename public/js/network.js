@@ -33,6 +33,8 @@ $(document).ready(function() {
       var emailLink = $("<a target='_blank'>");
       var singleProfile = $("<tr>");
 
+      singleProfile.addClass("table-row");
+
       colFirstName.text(profileInfo.firstName);
       singleProfile.append(colFirstName);
       colLastName.text(profileInfo.lastName);
