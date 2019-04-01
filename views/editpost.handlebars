@@ -104,6 +104,21 @@
     border-radius: 25px;
 
   }
+
+  #posts-header {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  #newPostBtn {
+      margin-top: 4rem;
+      margin-left: 4rem;
+      border-radius: 35px;
+      background: #9A6ECF !important;
+      border: none;
+      color: white;
+      text-align: center;
+  }
 </style>
 
 <body class="img-responsive">
@@ -116,11 +131,13 @@
           <h1>Bootcamper</h1>
         </div>
       </span>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#logout" aria-controls="logout"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="logout">
+      <div class= "pr-sm-5">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#logout"
+              aria-controls="logout" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+      <div class="collapse navbar-collapse pl-0 pl-md-3" id="logout">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="/myaccount">
@@ -148,10 +165,15 @@
   </div>
   <div id="home">
     <div class="container">
-
       <div class="row">
-        <div class="col-lg-12" id="posts-section">
-          <h2 id="posts-header">Edit Post</h2>
+          <div class="col-lg-9 col-md-7 col-sm-7 col-4" id="posts-section">
+              <h2 id="posts-header">Edit Post</h2>
+          </div>
+          <div class="col-lg-3 col-md-5 col-sm-5 col-8" id="btn-div">
+              <button onclick="window.location.href='/myposts'" type="submit" class="btn btn-lg btn-dark"
+                  id="newPostBtn">Go Back</button>
+          </div>
+      </div>
           <hr class="separator-lg">
           <div class="card mb-5">
             <div class="card-body">

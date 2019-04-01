@@ -37,6 +37,8 @@ $(document).ready(function() {
     var cardHeader = $("<div>");
     var row1 = $("<div>");
     var col12 = $("<div>");
+    var colCounter = $("<div>");
+    var commentCounter = $("<h6>");
     var span = $("<span>");
     var hr = $("<hr>");
     var row2 = $("<div>");
@@ -58,15 +60,17 @@ $(document).ready(function() {
     card.addClass("card mb-4");
     cardHeader.addClass("card-header");
     row1.addClass("row");
-    col12.addClass("col-lg-12");
+    col12.addClass("col-lg-10 col-md-9 col-8");
+    colCounter.addClass("col-lg-2 col-md-3 col-4");
+    commentCounter.addClass("pt-3 comments");
     span.addClass("badge badge-secondary");
     span.attr("id", "post_Category");
     hr.addClass("separator-md");
     row2.addClass("row");
     row2.attr("id", "singlePost");
-    col9.addClass("col-lg-7 col-md-5 col-10 mb-3");
+    col9.addClass("col-lg-7 col-md-5 col-sm-8 col-7 mb-3");
     postTitle.attr("id", "post_Title");
-    col1.addClass("col-lg-2 col-2 col-md-3 buttons-section");
+    col1.addClass("col-lg-2 col-sm-4 col-5 col-md-3 buttons-section");
     editButton.addClass("btn btn-default mr-1");
     deleteButton.addClass("btn btn-default");
     editButton.attr("id", "edit-submit");
@@ -101,6 +105,7 @@ $(document).ready(function() {
     //Insert info from posts
     $(span).addClass("badge");
     span.text(post.category);
+    commentCounter.text("Comments: " + post.Comments.length);
     postTitle.text(post.title);
     postAuthor.text(author);
     postDate.text(formattedDate);
@@ -113,7 +118,7 @@ $(document).ready(function() {
     //Link title of post to unique post page
     var postLink = url + "/posts=" + post.id;
     console.log(postLink);
-    $(link).attr("data-message", postLink);
+    $(link).attr("href", postLink);
 
     $(editButton).attr("onclick", `location.href='/editpost=${post.id}'`);
     $(editButton).attr("type", "submit");
@@ -122,6 +127,8 @@ $(document).ready(function() {
     //Append to page
     col12.append(span);
     row1.append(col12);
+    colCounter.append(commentCounter);
+    row1.append(colCounter);
     cardHeader.append(row1);
     card.append(cardHeader);
     newPostCard.append(card);

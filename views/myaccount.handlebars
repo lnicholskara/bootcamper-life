@@ -147,6 +147,8 @@
         margin: 1rem 2rem;
         text-align: right;
     }
+
+
 </style>
 
 <body class="img-responsive">
@@ -156,14 +158,16 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <span class="navbar-brand">
                 <div class="navbar-brand" id="navLogo">
-                    <h1>Bootcamper</h1>
+                    <h1 id="jumbotitle">Bootcamper</h1>
                 </div>
             </span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#logout"
-                aria-controls="logout" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="logout">
+            <div class= "pr-sm-5">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#logout"
+                    aria-controls="logout" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse pl-0 pl-md-3" id="logout">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/myaccount">
@@ -193,10 +197,10 @@
     <!-- MY ACCOUNT -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 col-md-6 col-12" id="posts-section">
+            <div class="col-lg-9 col-md-7 col-sm-7 col-4" id="posts-section">
                 <h2 id="account-header">My Account</h2>
             </div>
-            <div class="col-lg-3 col-md-6 col-12" id="btn-div">
+            <div class="col-lg-3 col-md-5 col-sm-5 col-8" id="btn-div">
                 <button onclick="window.location.href='/myposts'" type="submit" class="btn btn-lg btn-dark"
                     id="newPostBtn">My Posts</button>
             </div>
@@ -206,43 +210,45 @@
         <div class="card">
             <div class="card-header">
                 <div class="row" id="singlePost">
-                    <div class="col-lg-11">
-                        <h3 id="username"></h3>
+                    <div class="col-md-1 col-2 pt-2 pb-2 ml-4">
+                        <canvas id="user-icon" style="border-radius:50%" width="64" height="64"></canvas>
+                        
+                        
                     </div>
-                    <div class="col-lg-1">
+                    <div class="">
                         <!-- <canvas id="user-icon" width="1rem" height="1rem" style="background: black"> -->
                         {{!-- <h1><i class="fas fa-user-circle"></i></h1> --}}
                         {{!-- <div id="#avatar-name"></div> --}}
                         <!-- </canvas> -->
-                        <canvas id="user-icon" style="border-radius:50%" width="64" height="64"></canvas>
+                        <h3 id="username"></h3>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h5 id="school">First Name</h5>
+                        <h5 id="school" class= "ml-lg-4 ml-0">First Name</h5>
                     </div>
                     <div class="col-lg-5" style="text-align: right">
                         <input type="text" value="" name="first_name" class="form-control" id="firstname"
                             placeholder="First Name" required>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="school">Last Name</h5>
+                        <h5 id="school" class= "ml-lg-4 ml-0">Last Name</h5>
                     </div>
                     <div class="col-lg-5">
                         <input type="text" value="" name="last_name" class="form-control" id="lastname" placeholder="Last Name"
                             required>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="school">Your Email</h5>
+                        <h5 id="school" class= "ml-lg-4 ml-0">Your Email</h5>
                     </div>
                     <div class="col-lg-5">
                         <input type="email" value="" name="email" class="form-control" id="email" aria-describedby="emailHelp"
                             placeholder="Email" required>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="school">Campus</h5>
+                        <h5 id="school" class= "ml-lg-4 ml-0">Campus</h5>
                     </div>
                     <div class="col-lg-5">
                         <input type="text" name="school" class="form-control" id="userSchool"
@@ -265,19 +271,19 @@
                         </div>
                     </div> --}}
                     <div class="col-lg-6">
-                        <h5 id="school">City</h5>
+                        <h5 id="school" class= "ml-lg-4 ml-0">City</h5>
                     </div>
                     <div class="col-lg-5">
                         <input type="text" name="city" class="form-control" id="city" placeholder="City" required>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="school">State</h5>
+                        <h5 id="school" class= "ml-lg-4 ml-0">State</h5>
                     </div>
                     <div class="col-lg-5">
                         <input type="text" name="state" class="form-control" id="state" placeholder="State" required>
                     </div>
                     <div class="col-lg-6">
-                        <h5 id="school">Github Account</h5>
+                        <h5 id="school" class= "ml-lg-4 ml-0">Github Account</h5>
                     </div>
                     <div class="col-lg-5">
                         <input type="text" name="github_link" class="form-control" id="github_link"
