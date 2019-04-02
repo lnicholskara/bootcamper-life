@@ -2,25 +2,24 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 var passport = require("passport");
-// var session = require("express-session");
+var session = require("express-session");
 var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 4000;
 
 // For Passport
-// app.use(
-//   session({
-//     secret: "keyboard cat",
-//     resave: true,
-//     saveUninitialized: true
-//   })
-// );
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
 // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-// app.use(app.router);
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
