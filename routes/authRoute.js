@@ -17,7 +17,7 @@ module.exports = function(app, passport) {
 
   // Signup using HerokuStrategy
   app.post(
-    "/signup",
+    "/auth/heroku/callback",
     passport.authenticate("heroku", {
       successRedirect: "/posts",
 
@@ -37,7 +37,7 @@ module.exports = function(app, passport) {
 
   // Signin using HerokuStrategy
   app.post(
-    "/signin",
+    "/auth/heroku/callback",
     passport.authenticate("heroku", {
       successRedirect: "/posts",
 
