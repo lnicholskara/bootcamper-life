@@ -6,7 +6,7 @@ var passport = require("passport");
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3306;
+var PORT = process.env.PORT || 3000;
 
 // For Passport
 // app.use(
@@ -20,7 +20,7 @@ var PORT = process.env.PORT || 3306;
 // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-// app.use(app.router);
+app.use(app.router);
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
