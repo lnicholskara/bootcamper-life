@@ -6,7 +6,7 @@ var passport = require("passport");
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 4000;
+var PORT = process.env.PORT || 3306;
 
 // For Passport
 // app.use(
