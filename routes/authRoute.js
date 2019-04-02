@@ -5,18 +5,40 @@ module.exports = function(app, passport) {
 
   app.get("/signin", authController.signin);
 
+  //Using LocalStrategy
+  // app.post(
+  //   "/signup",
+  //   passport.authenticate("local-signup", {
+  //     successRedirect: "/posts",
+
+  //     failureRedirect: "/signup"
+  //   })
+  // );
+
+  // Signup using HerokuStrategy
   app.post(
     "/signup",
-    passport.authenticate("local-signup", {
+    passport.authenticate("heroku", {
       successRedirect: "/posts",
 
       failureRedirect: "/signup"
     })
   );
 
+  // Signin using LocalStrategy
+  // app.post(
+  //   "/signin",
+  //   passport.authenticate("local-signin", {
+  //     successRedirect: "/posts",
+
+  //     failureRedirect: "/signin"
+  //   })
+  // );
+
+  // Signin using HerokuStrategy
   app.post(
     "/signin",
-    passport.authenticate("local-signin", {
+    passport.authenticate("heroku", {
       successRedirect: "/posts",
 
       failureRedirect: "/signin"
