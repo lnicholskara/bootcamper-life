@@ -1,9 +1,12 @@
+require("dotenv").config();
 var bCrypt = require("bcrypt-nodejs");
 
 module.exports = function(passport, user) {
   var User = user;
 
-  var LocalStrategy = require("passport-local").Strategy;
+  // var LocalStrategy = require("passport-local").Strategy;
+  var HerokuStrategy = require("passport-heroku").Strategy;
+
   //serialize
   passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -22,12 +25,11 @@ module.exports = function(passport, user) {
 
   //LOCAL SIGNUP
   passport.use(
-    "local-signup",
-    new LocalStrategy(
+    new HerokuStrategy(
       {
-        usernameField: "email",
-        passwordField: "password",
-        passReqToCallback: true // allows us to pass back the entire request to the callback
+        clientID: "b24ac9ad-f474-4ba2-a2c6-331b4c745ebb",
+        clientSecret: "340ee250-8900-4a62-80cc-943bff810519",
+        callbackURL: "http://127.0.0.1:3000/auth/heroku/callback"
       },
 
       function(req, email, password, done) {
@@ -85,16 +87,11 @@ module.exports = function(passport, user) {
   );
   //LOCAL SIGNIN
   passport.use(
-    "local-signin",
-    new LocalStrategy(
+    new HerokuStrategy(
       {
-        // by default, local strategy uses username and password, we will override with email
-
-        usernameField: "email",
-
-        passwordField: "password",
-
-        passReqToCallback: true // allows us to pass back the entire request to the callback
+        clientID: "b24ac9ad-f474-4ba2-a2c6-331b4c745ebb",
+        clientSecret: "340ee250-8900-4a62-80cc-943bff810519",
+        callbackURL: "http://127.0.0.1:3000/auth/heroku/callback"
       },
 
       function(req, email, password, done) {
